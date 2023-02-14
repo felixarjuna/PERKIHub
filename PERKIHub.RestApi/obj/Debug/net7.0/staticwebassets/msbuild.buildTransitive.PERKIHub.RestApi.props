@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/PERKIHub.RestApi.props" />
+</Project>

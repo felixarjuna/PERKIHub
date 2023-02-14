@@ -1,0 +1,12 @@
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/bin/Debug/net7.0/PERKIHub.Domain.deps.json
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/bin/Debug/net7.0/PERKIHub.Domain.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/bin/Debug/net7.0/PERKIHub.Domain.pdb
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.csproj.AssemblyReference.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.AssemblyInfoInputs.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.AssemblyInfo.cs
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.csproj.CoreCompileInputs.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/refint/PERKIHub.Domain.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/PERKIHub.Domain.pdb
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Domain/obj/Debug/net7.0/ref/PERKIHub.Domain.dll

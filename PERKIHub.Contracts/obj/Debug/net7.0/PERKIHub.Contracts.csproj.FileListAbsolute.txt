@@ -1,0 +1,12 @@
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/bin/Debug/net7.0/PERKIHub.Contracts.deps.json
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/bin/Debug/net7.0/PERKIHub.Contracts.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/bin/Debug/net7.0/PERKIHub.Contracts.pdb
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.csproj.AssemblyReference.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.AssemblyInfoInputs.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.AssemblyInfo.cs
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.csproj.CoreCompileInputs.cache
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/refint/PERKIHub.Contracts.dll
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/PERKIHub.Contracts.pdb
+/Users/felixarjuna/Desktop/programming./perki-aachen./PERKIHub/PERKIHub.Contracts/obj/Debug/net7.0/ref/PERKIHub.Contracts.dll
