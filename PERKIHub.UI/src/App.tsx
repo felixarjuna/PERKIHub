@@ -3,24 +3,35 @@ import './App.css';
 
 function App() {
   return (
-    <div className="">
+    <div>
       <h1 className="text-2xl my-5">Sign in to PerkiHub</h1>
 
-      <div>
+      <div className="border-2 border-red-200 px-8 py-8 rounded-md">
         <Form method="post">
-          <div className="m-2 px-3 w-80">
-            <label className="my-2">
+          <div className="flex flex-col w-64 ">
+            <label className="my-2 flex items-start" htmlFor="email-field">
               Username or email address
-              <input type="text" className="p-2 rounded-lg" name="email" />
             </label>
+            <input
+              id="email-field"
+              type="text"
+              className="p-2 rounded-lg block mt-1"
+              name="email"
+            />
           </div>
-          <div className="m-2 px-3 flex flex-col w-80">
-            <label className="my-2">
+
+          <div className="flex flex-col mt-4">
+            <label className="my-2 flex items-start" htmlFor="password-field">
               Password
-              <input type="text" className="p-2 rounded-lg" name="password" />
             </label>
+            <input
+              id="password-field"
+              type="password"
+              className="p-2 rounded-lg block mt-1"
+              name="password"
+            />
           </div>
-          <button className="mt-4">Sign in</button>
+          <button className="mt-8">Sign in</button>
         </Form>
       </div>
     </div>
