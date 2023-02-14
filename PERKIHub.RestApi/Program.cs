@@ -1,9 +1,19 @@
 using System.Runtime.CompilerServices;
 using PERKIHub.RestApi;
 
+var allowAllOrigins = "_allowAllOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 {
-  builder.Services.AddCors(options => options.AddPolicy(name: "_allowSpecificOrigins", policy => policy.WithOrigins("http://localhost:5173")));
+  builder.Services.AddCors(options =>
+  {
+    options.AddPolicy(
+      name: allowAllOrigins,
+      builder => builder
+        .WithOrigins("http://localhost:5173")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+  });
 
   // Add services to the container.
   builder.Services.AddControllers();
@@ -23,10 +33,8 @@ var app = builder.Build();
     app.UseSwaggerUI();
   }
 
-  app.UseCors("_allowSpecificOrigins");
-
   app.UseHttpsRedirection();
-
+  app.UseCors(allowAllOrigins);
   app.UseAuthorization();
 
   app.MapControllers();
