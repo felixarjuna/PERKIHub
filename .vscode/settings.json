@@ -1,8 +1,12 @@
 {
   "cSpell.words": [
+    "falu",
     "firstname",
     "lastname",
-    "PERKI"
+    "PERKI",
+    "tailwindcss",
+    "tanstack",
+    "tundora"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,

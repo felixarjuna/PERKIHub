@@ -1,36 +1,32 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from 'react-router-dom';
-import App from './App';
 import './index.css';
-import { signIn } from './lib/api/api';
-import { SignInRequest } from './lib/api/contracts';
+
+import ErrorPage from './error-page';
+import Contact from './routes/Contact/Contact';
 import Root from './routes/Root';
 
-const onEventSignIn = async () => {
-  const signInRequest: SignInRequest = {
-    email: 'felixarjuna@ymail.com',
-    password: 'hello123',
-  };
-
-  await signIn(signInRequest);
-  return redirect('/');
-};
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { onEventSignIn } from './lib/events/events';
+import { LoginForm } from './routes/Login/LoginForm';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-    action: onEventSignIn,
-  },
-  {
-    path: '/webapp',
     element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/contacts/:contactId',
+        element: <Contact />,
+      },
+      {
+        path: '/login',
+        element: <LoginForm />,
+        action: onEventSignIn,
+      },
+    ],
   },
 ]);
 
