@@ -13,7 +13,7 @@ interface FavoriteProps {
   contact: Contact;
 }
 
-export default function Contact() {
+export default function User() {
   const contact = {
     first: 'Your',
     last: 'Name',

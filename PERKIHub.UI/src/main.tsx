@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import ErrorPage from './error-page';
-import Contact from './routes/Contact/Contact';
+import User from './routes/Contact/User';
 import Root from './routes/Root';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { onEventSignIn } from './lib/events/events';
+import {
+  onCreateUser,
+  onEventSignIn,
+  onLoadUser,
+  onLoadUsers,
+  onUpdateUser,
+} from './lib/events/events';
+import EditUser from './routes/Contact/Edit';
 import { LoginForm } from './routes/Login/LoginForm';
 
 const router = createBrowserRouter([
@@ -16,17 +23,26 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: onLoadUsers,
+    action: onCreateUser,
     children: [
       {
-        path: '/contacts/:contactId',
-        element: <Contact />,
+        path: '/users/:userID',
+        element: <User />,
+        loader: ({ params }) => onLoadUser(params),
       },
       {
-        path: '/login',
-        element: <LoginForm />,
-        action: onEventSignIn,
+        path: '/users/:userID/edit',
+        element: <EditUser />,
+        loader: ({ params }) => onLoadUser(params),
+        action: ({ request, params }) => onUpdateUser({ request, params }),
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <LoginForm />,
+    action: onEventSignIn,
   },
 ]);
 
