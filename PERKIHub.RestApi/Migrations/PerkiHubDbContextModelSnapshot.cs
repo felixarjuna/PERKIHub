@@ -41,7 +41,7 @@ namespace PERKIHub.RestApi.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("PH_UserDef");
+                    b.ToTable("PH_UserDef", (string)null);
                 });
 #pragma warning restore 612, 618
         }

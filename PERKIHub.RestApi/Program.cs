@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using PERKIHub.RestApi;
 using PERKIHub.RestApi.Persistence;

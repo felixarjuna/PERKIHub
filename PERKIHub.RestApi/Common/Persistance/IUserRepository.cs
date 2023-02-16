@@ -5,6 +5,6 @@ namespace PERKIHub.RestApi.Common.Persistance;
 public interface IUserRepository
 {
   User? GetUserByEmail(string email);
-  void Add(User user);
+  Task Add(User user);
   List<User> GetUsers();
 }
