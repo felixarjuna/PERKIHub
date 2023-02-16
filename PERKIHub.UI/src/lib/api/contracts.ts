@@ -25,10 +25,10 @@ export interface UserResponse{
   firstName: string,
   lastName: string,
   email: string,
-  password: string,
+  token: string,
 }
 
-export interface UserUpdateRequest{
+export interface UpsertUserRequest{
   id: string,
   firstName: string,
   lastName: string,

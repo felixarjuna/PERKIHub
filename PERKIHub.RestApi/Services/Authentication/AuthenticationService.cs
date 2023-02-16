@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
 using ErrorOr;
-using PERKIHub.Contracts.Authentication;
 using PERKIHub.Domain.Common.Errors;
 using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Common.Interfaces.Authentication;
@@ -28,13 +26,7 @@ public class AuthenticationService : IAuthenticationService
     }
 
     // Create user (Generate unique ID)
-    var user = new User
-    {
-      FirstName = firstName,
-      LastName = lastName,
-      Email = email,
-      Password = password
-    };
+    var user = User.Create(firstName, lastName, email, password);
 
     _userRepository.Add(user);
 

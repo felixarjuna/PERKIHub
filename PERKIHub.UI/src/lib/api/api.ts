@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RegisterRequest, SignInRequest, UserResponse, UserUpdateRequest } from "./contracts";
+import { RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
 
 // ---------------------------------------------------
 //
@@ -28,11 +28,11 @@ export const getUsers = async (): Promise<UserResponse[]> => {
 }
 
 export const getUser = async (userID: string): Promise<UserResponse> => {
-  const response = await axios.get<UserResponse>(`http://localhost:5089/users?userID=${userID}`);
+  const response = await axios.get<UserResponse>(`http://localhost:5089/users/${userID}`);
   return response.data;
 }
 
-export const updateUser = async(request: UserUpdateRequest) => {
+export const updateUser = async(request: UpsertUserRequest) => {
   const response = await axios.put(`http://localhost:5089/users?userID=${request.id}`, request)
   return response.data;
 }

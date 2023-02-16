@@ -24,7 +24,7 @@ export default function EditUser() {
         />
       </p>
       <label>
-        <span>Twitter</span>
+        <span>Email</span>
         <input
           type="text"
           name="twitter"
@@ -33,18 +33,18 @@ export default function EditUser() {
         />
       </label>
       <label>
-        <span>Avatar URL</span>
+        <span>Password</span>
         <input
           placeholder="https://example.com/avatar.jpg"
           aria-label="Avatar URL"
           type="text"
           name="avatar"
-          defaultValue={user.password}
+          defaultValue={user.token}
         />
       </label>
       <label>
-        <span>Notes</span>
-        <textarea name="notes" defaultValue={user.id} rows={6} />
+        <span>User ID</span>
+        <input name="notes" defaultValue={user.id} disabled />
       </label>
       <p>
         <button type="submit">Save</button>

@@ -1,8 +1,7 @@
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
+import { UserResponse } from '../../lib/api/contracts';
 
 interface Contact {
-  first: string;
-  last: string;
   avatar: string;
   twitter: string;
   notes: string;
@@ -15,13 +14,12 @@ interface FavoriteProps {
 
 export default function User() {
   const contact = {
-    first: 'Your',
-    last: 'Name',
     avatar: 'https://placekitten.com/g/200/200',
     twitter: 'your_handle',
     notes: 'Some notes',
     favorite: true,
   };
+  const user = useLoaderData() as UserResponse;
 
   return (
     <div id="contact">
@@ -31,9 +29,9 @@ export default function User() {
 
       <div>
         <h1>
-          {contact.first || contact.last ? (
+          {user.firstName || user.lastName ? (
             <>
-              {contact.first} {contact.last}
+              {user.firstName} {user.lastName}
             </>
           ) : (
             <i>No Name</i>
@@ -41,15 +39,15 @@ export default function User() {
           <Favorite contact={contact} />
         </h1>
 
-        {contact.twitter && (
+        {user.email && (
           <p>
             <a target="_blank" href={`https://twitter.com/${contact.twitter}`}>
-              {contact.twitter}
+              {user.email}
             </a>
           </p>
         )}
 
-        {contact.notes && <p>{contact.notes}</p>}
+        {user.token && <p>{user.token}</p>}
 
         <div>
           <Form action="edit">

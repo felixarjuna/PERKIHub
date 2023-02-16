@@ -8,4 +8,5 @@ public interface IUserRepository
   User? GetUserByID(Guid id);
   Task Add(User user);
   List<User> GetUsers();
+  Task Upsert(User user);
 }

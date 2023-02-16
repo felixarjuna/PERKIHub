@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using PERKIHub.Contracts.User;
-using PERKIHub.RestApi.Common.Persistance;
 using PERKIHub.RestApi.Services;
 
 namespace PERKIHub.RestApi.Controllers;
@@ -34,6 +33,27 @@ public class UsersController : ApiController
         res.LastName,
         res.Email,
         res.Password)),
+      err => Problem(err));
+  }
+
+  [HttpPut("{id}")]
+  public async Task<IActionResult> UpsertUserAsync(Guid id, UpsertUserRequest request)
+  {
+    if (id != request.ID)
+    {
+      return BadRequest();
+    }
+
+    var user = Domain.Entities.User.Create(
+      request.ID,
+      request.FirstName,
+      request.LastName,
+      request.Email,
+      request.Password);
+
+    var result = await _userService.UpsertUser(user);
+    return result.Match(
+      (res) => NoContent(),
       err => Problem(err));
   }
 }
