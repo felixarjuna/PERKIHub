@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PERKIHub.Contracts.User;
 using PERKIHub.RestApi.Common.Persistance;
 using PERKIHub.RestApi.Services;
 
@@ -19,5 +20,20 @@ public class UsersController : ApiController
   {
     var result = _userService.GetUsers();
     return Ok(result);
+  }
+
+  [HttpGet("{id}")]
+  public IActionResult GetUsers(Guid id)
+  {
+    var result = _userService.GetUser(id);
+
+    return result.Match(
+      (res) => Ok(new UserResponse(
+        res.ID,
+        res.FirstName,
+        res.LastName,
+        res.Email,
+        res.Password)),
+      err => Problem(err));
   }
 }

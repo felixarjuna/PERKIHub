@@ -23,6 +23,11 @@ public class UserRepository : IUserRepository
     return _context.PH_UserDef.FirstOrDefault(u => u.Email == email);
   }
 
+  public User? GetUserByID(Guid id)
+  {
+    return _context.PH_UserDef.Find(id);
+  }
+
   public List<User> GetUsers()
   {
     return _context.PH_UserDef.ToList();

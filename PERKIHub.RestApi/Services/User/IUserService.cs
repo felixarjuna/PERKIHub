@@ -6,4 +6,5 @@ namespace PERKIHub.RestApi.Services;
 public interface IUserService
 {
   List<User> GetUsers();
+  ErrorOr<User> GetUser(Guid id);
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import ErrorPage from './error-page';
-import User from './routes/Contact/User';
+import User from './routes/User/User';
 import Root from './routes/Root';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -15,7 +15,7 @@ import {
   onLoadUsers,
   onUpdateUser,
 } from './lib/events/events';
-import EditUser from './routes/Contact/Edit';
+import EditUser from './routes/User/Edit';
 import { LoginForm } from './routes/Login/LoginForm';
 
 const router = createBrowserRouter([
