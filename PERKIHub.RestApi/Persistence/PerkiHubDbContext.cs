@@ -1,0 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using PERKIHub.Domain.Entities;
+
+namespace PERKIHub.RestApi.Persistence;
+
+public class PerkiHubDbContext : DbContext
+{
+  public PerkiHubDbContext(DbContextOptions<PerkiHubDbContext> options)
+    : base(options)
+  {
+  }
+
+  public DbSet<User> PH_UserDef { get; set; } = null!;
+}

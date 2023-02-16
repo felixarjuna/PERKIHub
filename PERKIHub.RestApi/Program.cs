@@ -1,5 +1,7 @@
 using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using PERKIHub.RestApi;
+using PERKIHub.RestApi.Persistence;
 
 var allowAllOrigins = "_allowAllOrigins";
 
@@ -21,6 +23,10 @@ var builder = WebApplication.CreateBuilder(args);
   builder.Services.AddEndpointsApiExplorer();
   builder.Services.AddSwaggerGen();
   builder.Services.AddServices(builder.Configuration);
+
+  builder.Services.AddDbContext<PerkiHubDbContext>(options =>
+    options.UseSqlite("Data Source=PERKIHub.db")
+  );
 }
 
 var app = builder.Build();
