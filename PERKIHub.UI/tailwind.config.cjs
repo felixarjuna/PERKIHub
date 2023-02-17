@@ -3,6 +3,11 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        unbounded: ['Unbounded', 'sans-serif'],
+        maragsa: ['Maragsa', 'sans-serif'],
+        inter: ['Inter', 'serif'],
+      },
       colors: {
         'falu-red': {
           50: '#fef2f2',
@@ -40,6 +45,10 @@ module.exports = {
           800: '#69442a',
           900: '#5b3b28',
         },
+        maroon: '#851A1A',
+        lightmaroon: '#B3735A',
+        cream: '#F3EED9',
+        lightcream: '#F7F4E7',
       },
     },
   },
