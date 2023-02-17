@@ -14,8 +14,9 @@ import {
   onEventSignIn,
   onLoadUser,
   onLoadUsers,
-  onUpdateUser
+  onUpdateUser,
 } from './lib/events/events';
+import { Index } from './routes/Index/Index';
 import { LoginForm } from './routes/Login/LoginForm';
 import EditUser from './routes/User/Edit';
 
@@ -28,19 +29,25 @@ const router = createBrowserRouter([
     action: onCreateUser,
     children: [
       {
-        path: '/users/:userID',
-        element: <User />,
-        loader: ({ params }) => onLoadUser(params),
-      },
-      {
-        path: '/users/:userID/edit',
-        element: <EditUser />,
-        loader: ({ params }) => onLoadUser(params),
-        action: ({ request, params }) => onUpdateUser({ request, params }),
-      },
-      {
-        path: '/users/:userID/delete',
-        action: ({ params }) => onDeleteUser(params),
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <Index /> },
+          {
+            path: '/users/:userID',
+            element: <User />,
+            loader: ({ params }) => onLoadUser(params),
+          },
+          {
+            path: '/users/:userID/edit',
+            element: <EditUser />,
+            loader: ({ params }) => onLoadUser(params),
+            action: ({ request, params }) => onUpdateUser({ request, params }),
+          },
+          {
+            path: '/users/:userID/delete',
+            action: ({ params }) => onDeleteUser(params),
+          },
+        ],
       },
     ],
   },

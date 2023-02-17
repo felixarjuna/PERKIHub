@@ -22,7 +22,8 @@ export const register = async (request: RegisterRequest): Promise<UserResponse> 
 //                   Users
 //
 // ---------------------------------------------------
-export const getUsers = async (): Promise<UserResponse[]> => {
+export const getUsers = async (query: string): Promise<UserResponse[]> => {
+  console.log(query);
   const response = await axios.get<UserResponse[]>("http://localhost:5089/users");
   return response.data;
 }

@@ -10,9 +10,11 @@ export const onEventSignIn = async ({request, params}: ActionFunctionArgs) => {
   return redirect('/');
 };
 
-export const onLoadUsers = async () => {
-  const users = await getUsers();
-  return { users };
+export const onLoadUsers = async ({request}: ActionFunctionArgs) => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const users = await getUsers(q ?? "");
+  return { users, q };
 };
 
 export const onCreateUser = async() => {

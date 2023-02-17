@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useFetcher, useLoaderData } from 'react-router-dom';
 import { UserResponse } from '../../lib/api/contracts';
 
 interface Contact {
@@ -51,7 +51,9 @@ export default function User() {
 
         <div>
           <Form action="edit">
-            <button type="submit">Edit</button>
+            <button type="submit" className="submit-button">
+              Edit
+            </button>
           </Form>
           <Form
             method="post"
@@ -62,7 +64,9 @@ export default function User() {
               }
             }}
           >
-            <button type="submit">Delete</button>
+            <button type="submit" className="cancel-button">
+              Delete
+            </button>
           </Form>
         </div>
       </div>
@@ -71,6 +75,7 @@ export default function User() {
 }
 
 function Favorite({ contact }: FavoriteProps) {
+  const fetcher = useFetcher();
   // yes, this is a `let` for later
   let favorite = contact.favorite;
   return (

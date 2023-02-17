@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+  .text-input {
+    @apply rounded-md px-3 py-2 shadow-sm bg-white border-2 border-tundora-200 ;
+  }
+
+  .submit-button {
+    @apply px-4 py-2 bg-falu-red-800 text-white border-2 rounded-md border-falu-red-800 active:translate-y-[1px] active:drop-shadow-lg;
+  }
+
+  .cancel-button {
+    @apply px-4 py-2 border-2 border-parchment-300 rounded-md text-parchment-400 active:translate-y-[1px] active:drop-shadow-lg;
+  }
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -53,57 +67,6 @@ body {
   margin: 0;
   line-height: 1.5;
   color: #121212;
-}
-
-button:active {
-  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
-  transform: translateY(1px);
-}
-
-#contact h1 {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-#contact h1 form {
-  display: flex;
-  align-items: center;
-  margin-top: 0.25rem;
-}
-#contact h1 form button {
-  box-shadow: none;
-  font-size: 1.5rem;
-  font-weight: 400;
-  padding: 0;
-}
-#contact h1 form button[value="true"] {
-  color: #a4a4a4;
-}
-#contact h1 form button[value="true"]:hover,
-#contact h1 form button[value="false"] {
-  color: #eeb004;
-}
-
-form[action$="destroy"] button {
-  color: #f44250;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-#root {
-  display: flex;
-  height: 100%;
-  width: 100%;
 }
 
 #sidebar {
@@ -353,10 +316,6 @@ i {
   margin: 0 0 0 8rem;
 }
 
-#contact-form p:last-child button[type="button"] {
-  color: inherit;
-}
-
 #zero-state {
   margin: 2rem auto;
   text-align: center;
@@ -383,4 +342,16 @@ i {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

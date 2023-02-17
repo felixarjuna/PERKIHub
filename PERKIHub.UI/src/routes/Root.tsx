@@ -1,34 +1,64 @@
-import { Form, Link, Outlet, useLoaderData } from 'react-router-dom';
+import React from 'react';
+import {
+  Form,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useNavigation,
+  useSubmit,
+} from 'react-router-dom';
 import { UserResponse } from '../lib/api/contracts';
 
 interface UserLoader {
   users: UserResponse[];
+  q: string;
 }
 
 export default function Root() {
-  const { users } = useLoaderData() as UserLoader;
+  const { users, q } = useLoaderData() as UserLoader;
+
+  const [query, setQuery] = React.useState<string>(q);
+  React.useEffect(() => {
+    setQuery(q);
+  }, [q]);
+
+  const navigation = useNavigation();
+  const submit = useSubmit();
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has('q');
 
   return (
     <div className="flex h-screen w-screen">
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
-          <form id="search-form" role="search">
+          <Form role="search">
             <input
               id="q"
               aria-label="Search contacts"
               placeholder="Search"
               type="search"
               name="q"
-              className="rounded-md px-3 py-2 shadow-sm bg-white border-2 border-tundora-200"
+              className={searching ? 'loading' : 'text-input'}
+              defaultValue={q}
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                const isFirstSearch = q == null;
+                submit(e.currentTarget.form, {
+                  replace: !isFirstSearch,
+                });
+              }}
             />
-            <div id="search-spinner" aria-hidden hidden={true} />
-            <div className="sr-only" aria-live="polite"></div>
-          </form>
+            <div id="search-spinner" aria-hidden hidden={!searching} />
+            {/* <div className="sr-only" aria-live="polite"></div> */}
+          </Form>
           <Form method="post">
             <button
               type="submit"
-              className="text-tundora-700 px-3 py-2 border-2 border-tundora-200 rounded-md bg-white hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
+              className="text-input text-tundora-700 hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
             >
               New
             </button>
@@ -40,7 +70,12 @@ export default function Root() {
             <ul>
               {users.map((user) => (
                 <li key={user.id}>
-                  <Link to={`users/${user.id}`}>
+                  <NavLink
+                    to={`users/${user.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? 'active' : isPending ? 'pending' : ''
+                    }
+                  >
                     {user.firstName || user.lastName ? (
                       <>
                         {user.firstName} {user.lastName}
@@ -48,7 +83,7 @@ export default function Root() {
                     ) : (
                       <i>No Name</i>
                     )}{' '}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -60,7 +95,10 @@ export default function Root() {
         </nav>
       </div>
 
-      <div id="detail">
+      <div
+        id="detail"
+        className={navigation.state === 'loading' ? 'loading' : ''}
+      >
         <Outlet />
       </div>
     </div>
