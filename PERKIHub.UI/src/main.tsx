@@ -16,6 +16,7 @@ import {
   onLoadUsers,
   onUpdateUser,
 } from './lib/events/events';
+import { Homepage } from './routes/Homepage/Homepage';
 import { Index } from './routes/Index/Index';
 import { LoginForm } from './routes/Login/LoginForm';
 import EditUser from './routes/User/Edit';
@@ -23,6 +24,15 @@ import EditUser from './routes/User/Edit';
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Homepage />,
+  },
+  {
+    path: '/login',
+    element: <LoginForm />,
+    action: onEventSignIn,
+  },
+  {
+    path: '/app',
     element: <App />,
     errorElement: <ErrorPage />,
     loader: onLoadUsers,
@@ -33,28 +43,23 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Index /> },
           {
-            path: '/users/:userID',
+            path: '/app/users/:userID',
             element: <User />,
             loader: ({ params }) => onLoadUser(params),
           },
           {
-            path: '/users/:userID/edit',
+            path: '/app/users/:userID/edit',
             element: <EditUser />,
             loader: ({ params }) => onLoadUser(params),
             action: ({ request, params }) => onUpdateUser({ request, params }),
           },
           {
-            path: '/users/:userID/delete',
+            path: '/app/users/:userID/delete',
             action: ({ params }) => onDeleteUser(params),
           },
         ],
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginForm />,
-    action: onEventSignIn,
   },
 ]);
 

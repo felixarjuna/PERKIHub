@@ -58,7 +58,7 @@ export default function Root() {
           <Form method="post">
             <button
               type="submit"
-              className="text-input text-tundora-700 hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
+              className="text-input text-tundora-200 hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
             >
               New
             </button>
