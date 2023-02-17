@@ -36,3 +36,8 @@ export const updateUser = async(request: UpsertUserRequest) => {
   const response = await axios.put(`http://localhost:5089/users/${request.id}`, request)
   return response.data;
 }
+
+export const deleteUser = async(userID: string) => {
+  const response = await axios.delete(`http://localhost:5089/users/${userID}`);
+  return response.data;
+}

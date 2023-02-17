@@ -10,10 +10,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import {
   onCreateUser,
+  onDeleteUser,
   onEventSignIn,
   onLoadUser,
   onLoadUsers,
-  onUpdateUser,
+  onUpdateUser
 } from './lib/events/events';
 import { LoginForm } from './routes/Login/LoginForm';
 import EditUser from './routes/User/Edit';
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <EditUser />,
         loader: ({ params }) => onLoadUser(params),
         action: ({ request, params }) => onUpdateUser({ request, params }),
+      },
+      {
+        path: '/users/:userID/delete',
+        action: ({ params }) => onDeleteUser(params),
       },
     ],
   },

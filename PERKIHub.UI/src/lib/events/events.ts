@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, Params, redirect } from "react-router-dom";
-import { getUser, getUsers, register, signIn, updateUser } from "../api/api";
+import { deleteUser, getUser, getUsers, register, signIn, updateUser } from "../api/api";
 import { RegisterRequest, SignInRequest, UpsertUserRequest } from "../api/contracts";
 
 export const onEventSignIn = async ({request, params}: ActionFunctionArgs) => {
@@ -30,7 +30,6 @@ export const onCreateUser = async() => {
 export const onLoadUser = async({userID}: Params<string>) => {
   if (userID != undefined) {
     const user = await getUser(userID);
-    console.log(user);
     return user;
   }
 }
@@ -41,4 +40,9 @@ export const onUpdateUser = async({request, params}: ActionFunctionArgs) => {
 
   await updateUser(updateRequest);
   return redirect(`/users/${params.userID}`);
+}
+
+export const onDeleteUser = async({userID}: Params<string>) => {
+  if (userID != undefined)
+    await deleteUser(userID);
 }
