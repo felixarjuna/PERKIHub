@@ -4,10 +4,10 @@ import './index.css';
 
 import ErrorPage from './error-page';
 import User from './routes/User/User';
-import Root from './routes/Root';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
 import {
   onCreateUser,
   onEventSignIn,
@@ -15,13 +15,13 @@ import {
   onLoadUsers,
   onUpdateUser,
 } from './lib/events/events';
-import EditUser from './routes/User/Edit';
 import { LoginForm } from './routes/Login/LoginForm';
+import EditUser from './routes/User/Edit';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <App />,
     errorElement: <ErrorPage />,
     loader: onLoadUsers,
     action: onCreateUser,

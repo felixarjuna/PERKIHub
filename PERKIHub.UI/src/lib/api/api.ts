@@ -12,7 +12,7 @@ export const signIn = async (request: SignInRequest) => {
   return response.data;
 }
 
-export const register = async (request: RegisterRequest) => {
+export const register = async (request: RegisterRequest): Promise<UserResponse> => {
   const response = await axios.post("http://localhost:5089/auth/register", request);
   return response.data;
 }
@@ -33,6 +33,6 @@ export const getUser = async (userID: string): Promise<UserResponse> => {
 }
 
 export const updateUser = async(request: UpsertUserRequest) => {
-  const response = await axios.put(`http://localhost:5089/users?userID=${request.id}`, request)
+  const response = await axios.put(`http://localhost:5089/users/${request.id}`, request)
   return response.data;
 }

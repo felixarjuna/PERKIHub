@@ -1,12 +1,7 @@
-import './App.css';
-import { LoginForm } from './routes/Login/LoginForm';
+import Root from './routes/Root';
 
 function App() {
-  return (
-    <>
-      <LoginForm />
-    </>
-  );
+  return <Root />;
 }
 
 export default App;

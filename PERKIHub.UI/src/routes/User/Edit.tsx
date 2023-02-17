@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, redirect, useLoaderData } from 'react-router-dom';
 import { UserResponse } from '../../lib/api/contracts';
 
 export default function EditUser() {
@@ -12,14 +12,14 @@ export default function EditUser() {
           placeholder="First"
           aria-label="First name"
           type="text"
-          name="first"
+          name="firstName"
           defaultValue={user.firstName}
         />
         <input
           placeholder="Last"
           aria-label="Last name"
           type="text"
-          name="last"
+          name="lastName"
           defaultValue={user.lastName}
         />
       </p>
@@ -27,7 +27,7 @@ export default function EditUser() {
         <span>Email</span>
         <input
           type="text"
-          name="twitter"
+          name="email"
           placeholder="@jack"
           defaultValue={user.email}
         />
@@ -38,17 +38,19 @@ export default function EditUser() {
           placeholder="https://example.com/avatar.jpg"
           aria-label="Avatar URL"
           type="text"
-          name="avatar"
+          name="password"
           defaultValue={user.token}
         />
       </label>
       <label>
         <span>User ID</span>
-        <input name="notes" defaultValue={user.id} disabled />
+        <input name="id" defaultValue={user.id} />
       </label>
       <p>
         <button type="submit">Save</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={() => redirect(`/users/${user.id}`)}>
+          Cancel
+        </button>
       </p>
     </Form>
   );

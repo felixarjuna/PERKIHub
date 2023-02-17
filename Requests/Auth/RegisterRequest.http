@@ -2,8 +2,8 @@ POST http://localhost:5089/auth/register
 Content-Type: application/json
 
 {
-  "firstName": "Celine",
-  "lastName": "Gabrielle",
-  "email": "celinegabrielle@yahoo.com",
+  "firstName": "Jeffy",
+  "lastName": "Hartanto",
+  "email": "hello@yahoo.com",
   "password": "hello123"
 }

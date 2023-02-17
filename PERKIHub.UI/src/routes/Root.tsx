@@ -9,7 +9,7 @@ export default function Root() {
   const { users } = useLoaderData() as UserLoader;
 
   return (
-    <>
+    <div className="flex h-screen w-screen">
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -20,12 +20,18 @@ export default function Root() {
               placeholder="Search"
               type="search"
               name="q"
+              className="rounded-md px-3 py-2 shadow-sm bg-white border-2 border-tundora-200"
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
           </form>
           <Form method="post">
-            <button type="submit">New</button>
+            <button
+              type="submit"
+              className="text-tundora-700 px-3 py-2 border-2 border-tundora-200 rounded-md bg-white hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
+            >
+              New
+            </button>
           </Form>
         </div>
 
@@ -57,6 +63,6 @@ export default function Root() {
       <div id="detail">
         <Outlet />
       </div>
-    </>
+    </div>
   );
 }
