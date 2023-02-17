@@ -9,4 +9,5 @@ public interface IUserRepository
   Task Add(User user);
   List<User> GetUsers();
   Task Upsert(User user);
+  Task Delete(Guid id);
 }

@@ -8,4 +8,5 @@ public interface IUserService
   List<User> GetUsers();
   ErrorOr<User> GetUser(Guid id);
   Task<ErrorOr<Updated>> UpsertUser(User user);
+  Task<ErrorOr<Deleted>> DeleteUser(Guid id);
 }

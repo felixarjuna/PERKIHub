@@ -43,4 +43,15 @@ public class UserService : IUserService
     await _userRepository.Upsert(user);
     return Result.Updated;
   }
+
+  public async Task<ErrorOr<Deleted>> DeleteUser(Guid id)
+  {
+    if (_userRepository.GetUserByID(id) is null)
+    {
+      return Errors.User.NotFound;
+    }
+
+    await _userRepository.Delete(id);
+    return Result.Deleted;
+  }
 }

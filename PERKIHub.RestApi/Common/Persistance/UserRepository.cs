@@ -44,4 +44,12 @@ public class UserRepository : IUserRepository
 
     await _context.SaveChangesAsync();
   }
+
+  public async Task Delete(Guid id)
+  {
+    var user = _context.PH_UserDef.Find(id);
+    _context.PH_UserDef.Remove(user!);
+
+    await _context.SaveChangesAsync();
+  }
 }

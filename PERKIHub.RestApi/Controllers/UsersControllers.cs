@@ -1,3 +1,4 @@
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using PERKIHub.Contracts.User;
 using PERKIHub.RestApi.Services;
@@ -37,7 +38,7 @@ public class UsersController : ApiController
   }
 
   [HttpPut("{id}")]
-  public async Task<IActionResult> UpsertUserAsync(Guid id, UpsertUserRequest request)
+  public async Task<IActionResult> UpsertUser(Guid id, UpsertUserRequest request)
   {
     if (id != request.ID)
     {
@@ -52,6 +53,15 @@ public class UsersController : ApiController
       request.Password);
 
     var result = await _userService.UpsertUser(user);
+    return result.Match(
+      (res) => NoContent(),
+      err => Problem(err));
+  }
+
+  [HttpDelete("{id}")]
+  public async Task<IActionResult> DeleteUserAsync(Guid id)
+  {
+    ErrorOr<Deleted> result = await _userService.DeleteUser(id);
     return result.Match(
       (res) => NoContent(),
       err => Problem(err));
