@@ -8,8 +8,8 @@ export const LoginForm = () => {
       </div>
       <div className="px-8 py-8 flex">
         <Form method="post">
-          <div className="flex flex-col">
-            <div className="flex flex-col w-80">
+          <div className="flex flex-col w-96">
+            <div className="flex flex-col">
               <label
                 className="my-2 flex items-start font-unbounded font-light text-sm"
                 htmlFor="email-field"

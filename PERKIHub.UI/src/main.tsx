@@ -16,9 +16,10 @@ import {
   onLoadUsers,
   onUpdateUser,
 } from './lib/events/events';
+import { LoginForm } from './routes/Authentication/LoginForm';
+import { RegisterForm } from './routes/Authentication/RegisterForm';
 import { Homepage } from './routes/Homepage/Homepage';
 import { Index } from './routes/Index/Index';
-import { LoginForm } from './routes/Login/LoginForm';
 import EditUser from './routes/User/Edit';
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LoginForm />,
     action: onEventSignIn,
+  },
+  {
+    path: '/register',
+    element: <RegisterForm />,
   },
   {
     path: '/app',
