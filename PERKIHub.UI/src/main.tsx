@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import ErrorPage from './error-page';
-import User from './routes/User/User';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
+import { User } from './lib/api/contracts';
 import {
   onCreateUser,
   onDeleteUser,
@@ -51,7 +51,6 @@ const router = createBrowserRouter([
           { index: true, element: <Index /> },
           {
             path: '/app/users/:userID',
-            element: <User />,
             loader: ({ params }) => onLoadUser(params),
           },
           {
