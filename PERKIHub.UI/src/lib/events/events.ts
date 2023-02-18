@@ -7,8 +7,16 @@ export const onEventSignIn = async ({request, params}: ActionFunctionArgs) => {
   const signInRequest = Object.fromEntries(formData) as unknown as SignInRequest;
 
   await signIn(signInRequest);
-  return redirect('/');
+  return redirect('/app');
 };
+
+export const onEventRegister = async ({request, params}: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const registerRequest = Object.fromEntries(formData) as unknown as RegisterRequest;
+
+  await register(registerRequest);
+  return redirect('/app');
+}
 
 export const onLoadUsers = async ({request}: ActionFunctionArgs) => {
   const url = new URL(request.url);

@@ -22,6 +22,7 @@ export const RegisterForm = () => {
                   type="text"
                   className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none w-full"
                   name="firstname"
+                  required
                 />
               </div>
               <div>
@@ -36,6 +37,7 @@ export const RegisterForm = () => {
                   type="text"
                   className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none w-full"
                   name="lastname"
+                  required
                 />
               </div>
             </div>
@@ -52,6 +54,7 @@ export const RegisterForm = () => {
                 type="text"
                 className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none"
                 name="email"
+                required
               />
             </div>
 
@@ -67,6 +70,7 @@ export const RegisterForm = () => {
                 type="password"
                 className="p-2 block mt-1 bg-tundora-900  focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none font-unbounded"
                 name="password"
+                required
               />
             </div>
 

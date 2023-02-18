@@ -11,6 +11,7 @@ import App from './App';
 import {
   onCreateUser,
   onDeleteUser,
+  onEventRegister,
   onEventSignIn,
   onLoadUser,
   onLoadUsers,
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <RegisterForm />,
+    action: onEventRegister,
   },
   {
     path: '/app',
