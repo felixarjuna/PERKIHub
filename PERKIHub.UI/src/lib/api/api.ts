@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
 
 // ---------------------------------------------------
@@ -7,8 +7,8 @@ import { RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from 
 //
 // ---------------------------------------------------
 
-export const signIn = async (request: SignInRequest) => {
-  const response = await axios.post("http://localhost:5089/auth/login", request);
+export const signIn = async (request: SignInRequest): Promise<UserResponse> => {
+  const response = await axios.post<SignInRequest, AxiosResponse<UserResponse>>("http://localhost:5089/auth/login", request);
   return response.data;
 }
 

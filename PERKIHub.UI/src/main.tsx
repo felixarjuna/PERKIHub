@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import ErrorPage from './error-page';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-import { User } from './lib/api/contracts';
+import ErrorPage from './error-page';
 import {
   onCreateUser,
   onDeleteUser,
@@ -17,11 +15,14 @@ import {
   onLoadUsers,
   onUpdateUser,
 } from './lib/events/events';
+import { AuthProvider } from './lib/hooks/useAuth';
 import { LoginForm } from './routes/Authentication/LoginForm';
 import { RegisterForm } from './routes/Authentication/RegisterForm';
 import { Homepage } from './routes/Homepage/Homepage';
 import { Index } from './routes/Index/Index';
 import EditUser from './routes/User/Edit';
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginForm />,
-    action: onEventSignIn,
+    action: onEventSignIn(queryClient),
+    errorElement: <>Hello</>,
   },
   {
     path: '/register',
@@ -69,12 +71,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-const queryClient = new QueryClient();
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

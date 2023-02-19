@@ -1,21 +1,42 @@
+import { QueryClient } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
 import { ActionFunctionArgs, Params, redirect } from "react-router-dom";
 import { deleteUser, getUser, getUsers, register, signIn, updateUser } from "../api/api";
 import { RegisterRequest, SignInRequest, UpsertUserRequest } from "../api/contracts";
+import { User } from "../models/User";
 
-export const onEventSignIn = async ({request, params}: ActionFunctionArgs) => {
+export const onEventSignIn = (queryClient: QueryClient) => async ({request, params}: ActionFunctionArgs): Promise<User | AxiosError<unknown, any> | undefined> => {
   const formData = await request.formData();
   const signInRequest = Object.fromEntries(formData) as unknown as SignInRequest;
 
-  await signIn(signInRequest);
-  return redirect('/app');
+  try {
+    const response = await signIn(signInRequest);
+    const user = new User(
+      response.firstName,
+      response.lastName,
+      response.email);
+    return user;
+  } catch(err) {
+    if (axios.isAxiosError(err)){
+       return err;
+    }
+  }
 };
 
 export const onEventRegister = async ({request, params}: ActionFunctionArgs) => {
   const formData = await request.formData();
   const registerRequest = Object.fromEntries(formData) as unknown as RegisterRequest;
 
-  await register(registerRequest);
-  return redirect('/app');
+  try {
+    const response = await register(registerRequest);
+    const user = new User(
+      response.firstName,
+      response.lastName,
+      response.email);
+    return user;
+  } catch(err) {
+    return err;
+  }
 }
 
 export const onLoadUsers = async ({request}: ActionFunctionArgs) => {

@@ -1,6 +1,24 @@
-import { Form, NavLink } from 'react-router-dom';
+import axios from 'axios';
+import React from 'react';
+import { Form, NavLink, useActionData } from 'react-router-dom';
+import { ErrorResponse } from '../../lib/api/contracts';
+import { User } from '../../lib/models/User';
 
 export const RegisterForm = () => {
+  const authResult = useActionData();
+  const [message, setMessage] = React.useState<string>('');
+
+  React.useEffect(() => {
+    if (authResult instanceof User) {
+      setMessage('Register successful. Please Login.');
+    }
+
+    if (axios.isAxiosError(authResult)) {
+      const error = authResult.response?.data as ErrorResponse;
+      return setMessage(error.title);
+    }
+  }, [authResult]);
+
   return (
     <div className="flex flex-col justify-center w-screen items-center h-screen">
       <div>
@@ -9,6 +27,12 @@ export const RegisterForm = () => {
       <div className="px-8 py-8 flex">
         <Form method="post">
           <div className="flex flex-col w-96">
+            {authResult != undefined && (
+              <div className="p-2 border-2 border-lightmaroon mb-4">
+                {message}
+              </div>
+            )}
+
             <div className="flex gap-3">
               <div className="w-1/2">
                 <label
