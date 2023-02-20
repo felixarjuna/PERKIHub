@@ -16,6 +16,7 @@ import {
   onUpdateUser,
 } from './lib/events/events';
 import { AuthProvider } from './lib/hooks/useAuth';
+import { CreateEventForm } from './routes/App/Events/CreateEventForm';
 import { LoginForm } from './routes/Authentication/LoginForm';
 import { RegisterForm } from './routes/Authentication/RegisterForm';
 import { Homepage } from './routes/Homepage/Homepage';
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Index /> },
+          { path: '/app/events/create', element: <CreateEventForm /> },
           {
             path: '/app/users/:userID',
             loader: ({ params }) => onLoadUser(params),

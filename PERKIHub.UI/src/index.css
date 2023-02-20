@@ -23,7 +23,7 @@
   }
 
   .submit-button {
-    @apply px-4 py-2 bg-falu-red-800 text-white border-2 rounded-md border-falu-red-800 active:translate-y-[1px] active:drop-shadow-lg;
+    @apply px-4 py-2 bg-maroon text-white border-2 border-maroon active:translate-y-[1px] active:drop-shadow-lg;
   }
 
   .cancel-button {
