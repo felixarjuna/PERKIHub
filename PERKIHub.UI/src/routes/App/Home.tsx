@@ -1,7 +1,5 @@
-import { BsFillCalendarPlusFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
-import { NavLink } from 'react-router-dom';
-import { EventCard } from './Cards/EventCard';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export const Home = () => {
   return (
@@ -15,21 +13,8 @@ export const Home = () => {
         </NavLink>
       </div>
 
-      <div className="mt-10">
-        <h1 className="text-6xl text-lightmaroon">Events</h1>
-        <h3 className="mt-10 text-4xl">This Week</h3>
-      </div>
-
-      <div
-        className="mt-4 flex items-center gap-3 cursor-pointer"
-        onClick={() => console.log('click')}
-      >
-        <BsFillCalendarPlusFill />
-        <p>New event</p>
-      </div>
-
       <div>
-        <EventCard />
+        <Outlet />
       </div>
     </div>
   );

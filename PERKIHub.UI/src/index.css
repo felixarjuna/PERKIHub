@@ -15,6 +15,10 @@
   body{
     @apply font-maragsa bg-tundora-900 tracking-wider text-lg text-cream;
   }
+
+  .text-gradient{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-parchment-200 to-maroon;
+  }
 }
 
 @layer components{
@@ -22,8 +26,12 @@
     @apply rounded-md px-3 py-2 shadow-sm bg-tundora-800 border-2 border-tundora-800 text-tundora-200;
   }
 
+  .input {
+    @apply p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none
+  }
+
   .submit-button {
-    @apply px-4 py-2 bg-maroon text-white border-2 border-maroon active:translate-y-[1px] active:drop-shadow-lg;
+    @apply px-4 py-2 bg-maroon text-cream border-2 border-cream hover:-translate-y-1 hover:-translate-x-1 active:drop-shadow-lg w-24 h-14 duration-500;
   }
 
   .cancel-button {

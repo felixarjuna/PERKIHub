@@ -5,9 +5,7 @@ export const Homepage = () => {
     <div className="xl:ml-32 p-10 flex h-screen">
       <div className=" w-3/5 self-center">
         <h2 className="text-8xl max-w-xl">Welcome to </h2>
-        <h2 className="text-8xl max-w-xl text-transparent bg-clip-text bg-gradient-to-r from-parchment-200 to-maroon">
-          Perki Hub.
-        </h2>
+        <h2 className="text-8xl max-w-xl text-gradient">Perki Hub.</h2>
         <h3 className="text-2xl mt-2">
           All in one place for our developed Apps.
         </h3>
