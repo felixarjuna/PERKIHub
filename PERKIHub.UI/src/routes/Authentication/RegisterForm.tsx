@@ -99,9 +99,7 @@ export const RegisterForm = () => {
             </div>
 
             <div className="w-24 mt-10 bg-lightmaroon group self-center">
-              <button className="px-3 py-2 border-2 border-cream w-24 flex items-center justify-center bg-transparent translate-x-2 translate-y-2 duration-300 text-cream -rotate-1 group-hover:-translate-x-1 group-hover:-translate-y-1">
-                Register
-              </button>
+              <button className="submit-button-outline">Register</button>
             </div>
           </div>
         </Form>

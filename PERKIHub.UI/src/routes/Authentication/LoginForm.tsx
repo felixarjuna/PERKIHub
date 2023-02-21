@@ -62,9 +62,7 @@ export const LoginForm = () => {
             </div>
 
             <div className="w-24 mt-10 bg-lightmaroon group self-center">
-              <button className="px-3 py-2 border-2 border-cream w-24 flex items-center justify-center bg-transparent translate-x-2 translate-y-2 duration-500 text-cream -rotate-1 group-hover:-translate-x-1 group-hover:-translate-y-1">
-                Sign in
-              </button>
+              <button className="submit-button-outline">Sign in</button>
             </div>
           </div>
         </Form>

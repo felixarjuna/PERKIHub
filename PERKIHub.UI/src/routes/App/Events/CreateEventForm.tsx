@@ -1,9 +1,11 @@
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 
 export const CreateEventForm = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-10">
-      <Form>
+      <Form method="post">
         <h2 className="text-7xl text-gradient">Create new event</h2>
         <div className="w-96">
           <div className="flex gap-1 flex-col justify-center mt-8">
@@ -13,13 +15,25 @@ export const CreateEventForm = () => {
             >
               Title
             </label>
-            <input type="text" id="title" name="title" className="input" />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              className="input"
+              required
+            />
           </div>
           <div className="flex gap-1 flex-col my-5">
             <label htmlFor="date" className="font-unbounded font-light text-sm">
               Date
             </label>
-            <input type="text" id="date" name="date" className="input" />
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="input"
+              required
+            />
           </div>
           <div className="flex gap-1 flex-col my-5">
             <label
@@ -28,7 +42,13 @@ export const CreateEventForm = () => {
             >
               Speaker
             </label>
-            <input type="text" id="speaker" name="speaker" className="input" />
+            <input
+              type="text"
+              id="speaker"
+              name="speaker"
+              className="input"
+              required
+            />
           </div>
           <div className="flex gap-1 flex-col my-5">
             <label
@@ -37,11 +57,24 @@ export const CreateEventForm = () => {
             >
               Topic
             </label>
-            <input type="text" id="topic" name="topic" className="input" />
+            <input
+              type="text"
+              id="topic"
+              name="topic"
+              className="input"
+              required
+            />
           </div>
 
-          <div className="mt-10 bg-cream w-24 h-14">
-            <button className="submit-button">Create</button>
+          <div className="mt-10 flex gap-5">
+            <div className="bg-cream w-24">
+              <button className="button-gray" onClick={() => navigate(-1)}>
+                Back
+              </button>
+            </div>
+            <div className="bg-lightmaroon w-24">
+              <button className="button-cream">Create</button>
+            </div>
           </div>
         </div>
       </Form>

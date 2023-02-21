@@ -11,20 +11,12 @@ export const Homepage = () => {
         </h3>
         <div className="my-10 flex gap-6 pb-10">
           <div className="bg-lightmaroon w-24 flex items-center justify-center">
-            <NavLink
-              to="/register"
-              className="w-24 bg-parchment-200 px-3 py-2 text-parchment-500 border-2 border-lightmaroon hover:-translate-x-1 hover:-translate-y-1 duration-500"
-              type="button"
-              onClick={() => console.log('register')}
-            >
+            <NavLink to="/register" className="button-cream" type="button">
               Register
             </NavLink>
           </div>
           <div className="w-24 flex items-center justify-center bg-cream">
-            <NavLink
-              to="/login"
-              className="px-3 py-2 border-2 border-cream w-24 flex items-center justify-center bg-tundora-700 hover:-translate-x-1 hover:-translate-y-1 duration-500"
-            >
+            <NavLink to="/login" className="button-gray">
               Login
             </NavLink>
           </div>
