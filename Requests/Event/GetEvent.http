@@ -1,0 +1,6 @@
+@host=http://localhost:5089
+
+GET {{host}}/events
+
+###
+GET {{host}}/events/

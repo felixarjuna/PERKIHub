@@ -1,0 +1,8 @@
+@host=http://localhost:5089
+
+POST {{host}}/events
+Content-Type: application/json
+
+{
+  
+}
