@@ -33,21 +33,36 @@ public class EventService : IEventService
     return _event ?? (ErrorOr<Event>)Errors.Event.NotFound;
   }
 
-  public async Task<ErrorOr<Updated>> UpsertEvent(Event _event)
+  public async Task<ErrorOr<UpsertedEvent>> UpsertEvent(Event _event)
   {
-    _context.PH_EventDef.Update(_event);
+    var isNew = !_context.PH_EventDef.Any((x) => x.ID == _event.ID);
+
+    if (isNew)
+    {
+      _context.PH_EventDef.Add(_event);
+    }
+    else
+    {
+      _context.PH_EventDef.Update(_event);
+    }
 
     await _context.SaveChangesAsync();
 
-    return Result.Updated;
+    return new UpsertedEvent(isNew);
   }
 
   public async Task<ErrorOr<Deleted>> DeleteEvent(Guid id)
   {
     var _event = _context.PH_EventDef.Find(id);
-    _context.PH_EventDef.Remove(_event!);
 
+    if (_event is null)
+    {
+      return Errors.Event.NotFound;
+    }
+
+    _context.PH_EventDef.Remove(_event);
     await _context.SaveChangesAsync();
+
     return Result.Deleted;
   }
 }

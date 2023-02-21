@@ -6,7 +6,8 @@
     "PERKI",
     "tailwindcss",
     "tanstack",
-    "tundora"
+    "tundora",
+    "Upserted"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
