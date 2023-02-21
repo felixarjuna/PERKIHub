@@ -2,16 +2,19 @@ import axios from 'axios';
 import React from 'react';
 import { Form, NavLink, useActionData, useNavigate } from 'react-router-dom';
 import { ErrorResponse } from '../../lib/api/contracts';
+import { useAuth } from '../../lib/hooks/useAuth';
 import { User } from '../../lib/models/User';
 
 export const LoginForm = () => {
   const authResult = useActionData();
+  const user = useAuth();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
   const navigate = useNavigate();
 
   React.useEffect(() => {
     if (authResult instanceof User) {
-      navigate('/app');
+      user?.setCurrentUser(authResult);
+      navigate('/app/events');
     }
 
     if (axios.isAxiosError(authResult)) {
