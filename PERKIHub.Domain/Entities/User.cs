@@ -1,4 +1,3 @@
-using System;
 namespace PERKIHub.Domain.Entities;
 
 public sealed class User

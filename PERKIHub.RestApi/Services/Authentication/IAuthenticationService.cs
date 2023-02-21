@@ -1,5 +1,4 @@
 using ErrorOr;
-using PERKIHub.Contracts.Authentication;
 
 namespace PERKIHub.RestApi.Services.Authentication;
 
