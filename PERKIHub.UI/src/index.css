@@ -38,6 +38,10 @@
     @apply w-24 bg-parchment-200 px-3 py-2 text-parchment-500 border-2 border-lightmaroon hover:-translate-x-1 hover:-translate-y-1 duration-500;
   }
 
+  .button-maroon {
+    @apply w-24 px-3 py-2 bg-maroon text-cream border-2 border-cream hover:-translate-y-1 hover:-translate-x-1 active:drop-shadow-lg w-24 h-14 duration-500;
+  }
+
   .submit-button {
     @apply px-4 py-2 bg-maroon text-cream border-2 border-cream hover:-translate-y-1 hover:-translate-x-1 active:drop-shadow-lg w-24 h-14 duration-500;
   }
