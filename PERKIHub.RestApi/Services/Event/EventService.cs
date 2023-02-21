@@ -1,4 +1,5 @@
 using ErrorOr;
+using PERKIHub.Domain.Common.Errors;
 using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Persistence;
 
@@ -8,28 +9,45 @@ public class EventService : IEventService
 {
   private readonly PerkiHubDbContext _context;
 
-  public ErrorOr<Created> CreateEvent(Event _event)
+  public EventService(PerkiHubDbContext context)
   {
-    throw new NotImplementedException();
+    _context = context;
+  }
+
+  public async Task<ErrorOr<Created>> CreateEvent(Event _event)
+  {
+    _context.PH_EventDef.Add(_event);
+    await _context.SaveChangesAsync();
+
+    return Result.Created;
   }
 
   public List<Event> GetEvents()
   {
-    throw new NotImplementedException();
+    return _context.PH_EventDef.ToList();
   }
 
   public ErrorOr<Event> GetEvent(Guid id)
   {
-    throw new NotImplementedException();
+    var _event = _context.PH_EventDef.Find(id);
+    return _event ?? (ErrorOr<Event>)Errors.Event.NotFound;
   }
 
-  public ErrorOr<Updated> UpsertEvent(Event _event)
+  public async Task<ErrorOr<Updated>> UpsertEvent(Event _event)
   {
-    throw new NotImplementedException();
+    _context.PH_EventDef.Update(_event);
+
+    await _context.SaveChangesAsync();
+
+    return Result.Updated;
   }
 
-  public ErrorOr<Deleted> DeleteEvent(Guid id)
+  public async Task<ErrorOr<Deleted>> DeleteEvent(Guid id)
   {
-    throw new NotImplementedException();
+    var _event = _context.PH_EventDef.Find(id);
+    _context.PH_EventDef.Remove(_event!);
+
+    await _context.SaveChangesAsync();
+    return Result.Deleted;
   }
 }

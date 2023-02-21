@@ -16,6 +16,7 @@ public static class DependencyInjection
     services.AddScoped<IAuthenticationService, AuthenticationService>();
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IEventService, EventService>();
 
     services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
     services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
