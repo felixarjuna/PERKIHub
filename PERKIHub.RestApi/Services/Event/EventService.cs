@@ -1,4 +1,5 @@
 using ErrorOr;
+using Microsoft.AspNetCore.Mvc;
 using PERKIHub.Domain.Common.Errors;
 using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Persistence;
@@ -14,6 +15,7 @@ public class EventService : IEventService
     _context = context;
   }
 
+  [HttpPost]
   public async Task<ErrorOr<Created>> CreateEvent(Event _event)
   {
     _context.PH_EventDef.Add(_event);
@@ -22,17 +24,20 @@ public class EventService : IEventService
     return Result.Created;
   }
 
+  [HttpGet]
   public List<Event> GetEvents()
   {
     return _context.PH_EventDef.ToList();
   }
 
+  [HttpGet("{id}")]
   public ErrorOr<Event> GetEvent(Guid id)
   {
     var _event = _context.PH_EventDef.Find(id);
     return _event ?? (ErrorOr<Event>)Errors.Event.NotFound;
   }
 
+  [HttpPut("{id}")]
   public async Task<ErrorOr<UpsertedEvent>> UpsertEvent(Event _event)
   {
     var isNew = !_context.PH_EventDef.Any((x) => x.ID == _event.ID);
@@ -51,6 +56,7 @@ public class EventService : IEventService
     return new UpsertedEvent(isNew);
   }
 
+  [HttpDelete("{id}")]
   public async Task<ErrorOr<Deleted>> DeleteEvent(Guid id)
   {
     var _event = _context.PH_EventDef.Find(id);

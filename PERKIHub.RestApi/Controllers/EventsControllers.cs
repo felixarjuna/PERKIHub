@@ -1,6 +1,7 @@
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using PERKIHub.Contracts.Event;
+using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Services;
 
 namespace PERKIHub.RestApi.Controllers;
@@ -15,6 +16,25 @@ public class EventsController : ApiController
     _eventService = eventService;
   }
 
+  [HttpPost]
+  public async Task<IActionResult> CreateEventAsync(CreateEventRequest request)
+  {
+    var _event = Event.Create(
+      request.Title,
+      request.Date,
+      request.Speaker,
+      request.Topic);
+
+    ErrorOr<Created> result = await _eventService.CreateEvent(_event);
+
+    return result.Match(
+      (res) => CreatedAtAction(
+        actionName: nameof(GetEvent),
+        routeValues: new { id = _event.ID },
+        value: _event),
+      (err) => Problem(err));
+  }
+
   [HttpGet]
   public IActionResult GetEvents()
   {
@@ -23,7 +43,7 @@ public class EventsController : ApiController
   }
 
   [HttpGet("{id}")]
-  public IActionResult GetEvents(Guid id)
+  public IActionResult GetEvent(Guid id)
   {
     var result = _eventService.GetEvent(id);
 
