@@ -10,6 +10,7 @@ import {
   onCreateEvent,
   onEventRegister,
   onEventSignIn,
+  onLoadEvents,
 } from './lib/events/events';
 import { AuthProvider } from './lib/hooks/useAuth';
 import { CreateEventForm } from './routes/App/Events/CreateEventForm';
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
         path: 'events',
         element: <Events />,
         errorElement: <ErrorPage />,
+        loader: onLoadEvents,
         children: [
           // {
           //   path: '/app/users/:userID',

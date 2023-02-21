@@ -4,7 +4,7 @@ import { RiCalendarEventFill, RiDiscussFill } from 'react-icons/ri';
 
 interface EventCardProps {
   title: string;
-  date: Date;
+  date: string;
   speaker: string;
   topic: string;
 }
@@ -14,6 +14,7 @@ export const EventCard = ({ title, date, speaker, topic }: EventCardProps) => {
     alert('You are part of the event now! 🎉');
   };
 
+  const eventDate = new Date(date);
   return (
     <div className="mt-10 bg-cream border-2 border-cream w-96">
       <div className="w-full border-4 border-cream p-10 bg-tundora-700 -translate-x-2 -translate-y-2">
@@ -31,7 +32,7 @@ export const EventCard = ({ title, date, speaker, topic }: EventCardProps) => {
           <div className="flex items-center gap-2 mt-3">
             <RiCalendarEventFill />
             <p className="opacity-80 text-[0.7rem] font-unbounded">
-              {date.toISOString()}
+              {eventDate.toLocaleString()}
             </p>
           </div>
           <div className="my-1 flex items-center gap-2">
@@ -46,9 +47,11 @@ export const EventCard = ({ title, date, speaker, topic }: EventCardProps) => {
 
         <div className="flex justify-between items-center">
           <p>Participants</p>
-          <button className="submit-button text-[1rem]" onClick={onUserJoin}>
-            Join
-          </button>
+          <div className="bg-cream w-24">
+            <button className="button-maroon text-[1rem]" onClick={onUserJoin}>
+              Join
+            </button>
+          </div>
         </div>
       </div>
     </div>

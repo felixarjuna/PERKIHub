@@ -68,3 +68,17 @@ export interface UpsertEventRequest{
   speaker: string,
   topic: string
 }
+
+export interface EventResponse{
+  id: string,
+  title: string,
+  date: string,
+  speaker: string,
+  topic: string,
+  participants: string[]
+};
+
+export type EventsData = {
+  events: EventResponse[],
+  q: string
+};

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { CreateEventRequest, RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
+import { CreateEventRequest, EventResponse, RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
 
 // ----------------------------------------------------------------------------
 //
@@ -50,5 +50,10 @@ export const deleteUser = async(userID: string) => {
 // -----------------------------------------------------------------------------
 export const createEvent = async(request: CreateEventRequest) => {
   const response = await axios.post("http://localhost:5089/events", request);
+  return response.data;
+}
+
+export const getEvents = async(query: string): Promise<EventResponse[]> => {
+  const response = await axios.get("http://localhost:5089/events");
   return response.data;
 }

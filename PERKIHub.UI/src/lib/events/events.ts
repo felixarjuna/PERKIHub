@@ -1,7 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { ActionFunctionArgs, Params, redirect } from "react-router-dom";
-import { createEvent, deleteUser, getUser, getUsers, register, signIn, updateUser } from "../api/api";
+import { createEvent, deleteUser, getEvents, getUser, getUsers, register, signIn, updateUser } from "../api/api";
 import { CreateEventRequest, RegisterRequest, SignInRequest, UpsertUserRequest } from "../api/contracts";
 import { User } from "../models/User";
 
@@ -101,4 +101,11 @@ export const onCreateEvent = async({request, params}: ActionFunctionArgs) => {
   await createEvent(createEventRequest);
   
   return redirect("/app/events");
+}
+
+export const onLoadEvents = async({request}: ActionFunctionArgs) => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const events = await getEvents(q ?? "");
+  return { events, q };
 }
