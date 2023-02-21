@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PERKIHub.RestApi.Persistence;
 
@@ -10,9 +11,11 @@ using PERKIHub.RestApi.Persistence;
 namespace PERKIHub.RestApi.Migrations
 {
     [DbContext(typeof(PerkiHubDbContext))]
-    partial class PerkiHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230221191504_CreateEventTable")]
+    partial class CreateEventTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
