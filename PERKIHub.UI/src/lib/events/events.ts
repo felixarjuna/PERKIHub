@@ -1,9 +1,15 @@
 import { QueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { ActionFunctionArgs, Params, redirect } from "react-router-dom";
-import { deleteUser, getUser, getUsers, register, signIn, updateUser } from "../api/api";
-import { RegisterRequest, SignInRequest, UpsertUserRequest } from "../api/contracts";
+import { createEvent, deleteUser, getUser, getUsers, register, signIn, updateUser } from "../api/api";
+import { CreateEventRequest, RegisterRequest, SignInRequest, UpsertUserRequest } from "../api/contracts";
 import { User } from "../models/User";
+
+// ----------------------------------------------------------------------------
+//
+//                               Authentication
+//
+// -----------------------------------------------------------------------------
 
 export const onEventSignIn = (queryClient: QueryClient) => async ({request, params}: ActionFunctionArgs): Promise<User | AxiosError<unknown, any> | undefined> => {
   const formData = await request.formData();
@@ -39,6 +45,11 @@ export const onEventRegister = async ({request, params}: ActionFunctionArgs) => 
   }
 }
 
+// -----------------------------------------------------------------------------
+//
+//                                    Users
+//
+// -----------------------------------------------------------------------------
 export const onLoadUsers = async ({request}: ActionFunctionArgs) => {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
@@ -76,4 +87,18 @@ export const onUpdateUser = async({request, params}: ActionFunctionArgs) => {
 export const onDeleteUser = async({userID}: Params<string>) => {
   if (userID != undefined)
     await deleteUser(userID);
+}
+
+// -----------------------------------------------------------------------------
+//
+//                                    Event
+//
+// -----------------------------------------------------------------------------
+export const onCreateEvent = async({request, params}: ActionFunctionArgs) => {
+  const formData = await request.formData();
+  const createEventRequest = Object.fromEntries(formData) as unknown as CreateEventRequest;
+
+  await createEvent(createEventRequest);
+  
+  return redirect("/app/events");
 }

@@ -48,3 +48,23 @@ export interface User{
   lastName: string,
   email: string,
 }
+
+// -----------------------------------------------------------------------------
+//
+//                                    Event
+//
+// -----------------------------------------------------------------------------
+export interface CreateEventRequest{
+  title: string,
+  date: Date,
+  speaker: string,
+  topic: string
+}
+
+export interface UpsertEventRequest{
+  id: string,
+  title: string,
+  date: Date,
+  speaker: string,
+  topic: string
+}

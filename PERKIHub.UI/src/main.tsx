@@ -6,7 +6,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import ErrorPage from './error-page';
-import { onEventRegister, onEventSignIn } from './lib/events/events';
+import {
+  onCreateEvent,
+  onEventRegister,
+  onEventSignIn,
+} from './lib/events/events';
 import { AuthProvider } from './lib/hooks/useAuth';
 import { CreateEventForm } from './routes/App/Events/CreateEventForm';
 import { Events } from './routes/App/Events/Events';
@@ -61,6 +65,7 @@ const router = createBrowserRouter([
       {
         path: 'events/create',
         element: <CreateEventForm />,
+        action: ({ request, params }) => onCreateEvent({ request, params }),
       },
     ],
   },

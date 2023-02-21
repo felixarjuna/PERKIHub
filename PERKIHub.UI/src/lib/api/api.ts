@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
-import { RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
+import { CreateEventRequest, RegisterRequest, SignInRequest, UpsertUserRequest, UserResponse } from "./contracts";
 
-// ---------------------------------------------------
+// ----------------------------------------------------------------------------
 //
-//                   Authentication
+//                               Authentication
 //
-// ---------------------------------------------------
+// -----------------------------------------------------------------------------
 
 export const signIn = async (request: SignInRequest): Promise<UserResponse> => {
   const response = await axios.post<SignInRequest, AxiosResponse<UserResponse>>("http://localhost:5089/auth/login", request);
@@ -17,11 +17,11 @@ export const register = async (request: RegisterRequest): Promise<UserResponse> 
   return response.data;
 }
 
-// ---------------------------------------------------
+// -----------------------------------------------------------------------------
 //
-//                   Users
+//                                    Users
 //
-// ---------------------------------------------------
+// -----------------------------------------------------------------------------
 export const getUsers = async (query: string): Promise<UserResponse[]> => {
   console.log(query);
   const response = await axios.get<UserResponse[]>("http://localhost:5089/users");
@@ -40,5 +40,15 @@ export const updateUser = async(request: UpsertUserRequest) => {
 
 export const deleteUser = async(userID: string) => {
   const response = await axios.delete(`http://localhost:5089/users/${userID}`);
+  return response.data;
+}
+
+// -----------------------------------------------------------------------------
+//
+//                                    Event
+//
+// -----------------------------------------------------------------------------
+export const createEvent = async(request: CreateEventRequest) => {
+  const response = await axios.post("http://localhost:5089/events", request);
   return response.data;
 }
