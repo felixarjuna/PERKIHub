@@ -1,0 +1,3 @@
+@host=http://localhost:5089
+
+DELETE {{host}}/events/4f0354b9-fdb9-424d-a810-96c9d26ebee9

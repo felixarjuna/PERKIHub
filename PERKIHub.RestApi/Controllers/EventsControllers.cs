@@ -75,7 +75,12 @@ public class EventsController : ApiController
 
     var result = await _eventService.UpsertEvent(_event);
     return result.Match(
-      (res) => NoContent(),
+      (res) => res.IsNewlyCreated
+        ? CreatedAtAction(
+          actionName: nameof(GetEvent),
+          routeValues: new { id = _event.ID },
+          value: _event)
+        : NoContent(),
       err => Problem(err));
   }
 

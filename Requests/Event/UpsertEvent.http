@@ -1,0 +1,12 @@
+@host=http://localhost:5089
+
+PUT {{host}}/events/4f0354b9-fdb9-424d-a810-96c9d26ebee9
+Content-Type: application/json
+
+{
+  "id": "4f0354b9-fdb9-424d-a810-96c9d26ebee9",
+  "title": "How to Pray",
+  "date": "2023-02-21T20:30:00",
+  "speaker": "Pdt. John Kusuma",
+  "topic": "Programming"
+}
