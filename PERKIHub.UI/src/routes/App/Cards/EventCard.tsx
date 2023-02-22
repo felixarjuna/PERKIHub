@@ -1,6 +1,7 @@
 import { BiChurch } from 'react-icons/bi';
 import { GiPublicSpeaker } from 'react-icons/gi';
 import { RiCalendarEventFill, RiDiscussFill } from 'react-icons/ri';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { JoinEventRequest } from '../../../lib/api/contracts';
 import { useJoinEvent } from '../../../lib/hooks/events/useEvents';
 import { useAuth } from '../../../lib/hooks/useAuth';
@@ -11,6 +12,7 @@ interface EventCardProps {
   date: string;
   speaker: string;
   topic: string;
+  participants: string[];
 }
 
 export const EventCard = ({
@@ -19,12 +21,21 @@ export const EventCard = ({
   date,
   speaker,
   topic,
+  participants,
 }: EventCardProps) => {
-  const { onJoinEvent } = useJoinEvent();
   const user = useAuth();
   const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { onJoinEvent } = useJoinEvent();
   const onUserJoin = () => {
+    // Check if user already login
+    if (user?.currentUser === null) {
+      // If not navigate login page
+      return navigate('/login', { state: { from: location }, replace: true });
+    }
+
     const request: JoinEventRequest = {
       id: id,
       username: name,
@@ -64,10 +75,18 @@ export const EventCard = ({
         </div>
 
         <div className="flex justify-between items-center">
-          <p>Participants</p>
+          <p>{participants.length} Participants</p>
           <div className="bg-cream w-24">
-            <button className="button-maroon text-[1rem]" onClick={onUserJoin}>
-              Join
+            <button
+              className={
+                participants.includes(name)
+                  ? 'button-cream hover:translate-x-0 hover:translate-y-0'
+                  : 'button-maroon text-[1rem]'
+              }
+              onClick={onUserJoin}
+              disabled={participants.includes(name)}
+            >
+              {participants.includes(name) ? `Joined` : 'Join'}
             </button>
           </div>
         </div>
