@@ -1,6 +1,9 @@
 import { BiChurch } from 'react-icons/bi';
 import { GiPublicSpeaker } from 'react-icons/gi';
 import { RiCalendarEventFill, RiDiscussFill } from 'react-icons/ri';
+import { JoinEventRequest } from '../../../lib/api/contracts';
+import { useJoinEvent } from '../../../lib/hooks/events/useEvents';
+import { useAuth } from '../../../lib/hooks/useAuth';
 
 interface EventCardProps {
   id: string;
@@ -10,9 +13,23 @@ interface EventCardProps {
   topic: string;
 }
 
-export const EventCard = ({ id, title, date, speaker, topic }: EventCardProps) => {
+export const EventCard = ({
+  id,
+  title,
+  date,
+  speaker,
+  topic,
+}: EventCardProps) => {
+  const { onJoinEvent } = useJoinEvent();
+  const user = useAuth();
+  const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
+
   const onUserJoin = () => {
-    alert('You are part of the event now! 🎉');
+    const request: JoinEventRequest = {
+      id: id,
+      username: name,
+    };
+    onJoinEvent.mutate(request);
   };
 
   const eventDate = new Date(date);

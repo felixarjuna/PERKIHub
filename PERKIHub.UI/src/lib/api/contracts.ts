@@ -83,3 +83,8 @@ export type EventsData = {
   events: EventResponse[],
   q: string
 };
+
+export interface JoinEventRequest{
+  id: string,
+  username: string
+};

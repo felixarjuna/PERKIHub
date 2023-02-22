@@ -13,4 +13,56 @@
     "source.organizeImports": true,
     "source.fixAll.eslint": true
   },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "[powershell]": {
+    "files.encoding": "utf8bom"
+  },
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "jestrunner.configPath": "jest.config.js",
+  "npm.packageManager": "yarn",
+  "prettier.arrowParens": "avoid",
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "editor.fontSize": 13,
+  "workbench.iconTheme": "vscode-icons",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.codeActionsOnSave.rules": null,
+  "window.commandCenter": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "liveshare.presence": true,
+  "http.proxyStrictSSL": false,
+  "debug.console.fontSize": 12,
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "todohighlight.isEnable": true,
+  "editor.tabSize": 2,
+  "markdown-preview-enhanced.previewTheme": "atom-light.css",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  }
 }
