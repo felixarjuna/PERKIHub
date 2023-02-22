@@ -22,7 +22,7 @@ function App() {
         ) : (
           <div className="flex gap-10 text-2xl">
             <NavLink to="/login" className="text-cream flex items-center gap-1">
-              Login
+              Log in
               <FiLogIn />
             </NavLink>
           </div>
