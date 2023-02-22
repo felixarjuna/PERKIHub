@@ -12,7 +12,7 @@ export const useJoinEvent = () => {
 };
 
 export const useEvents = (query: string) => {
-  const events = useQuery({
+  const { data: events } = useQuery({
     queryKey: ['events'],
     queryFn: () => getEvents(query),
   });

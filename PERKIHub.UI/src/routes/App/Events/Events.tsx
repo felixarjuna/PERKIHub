@@ -1,6 +1,6 @@
 import { BsFillCalendarPlusFill } from 'react-icons/bs';
-import { useLoaderData, useNavigate } from 'react-router-dom';
-import { EventsData } from '../../../lib/api/contracts';
+import { useNavigate } from 'react-router-dom';
+import { useEvents } from '../../../lib/hooks/events/useEvents';
 import { useAuth } from '../../../lib/hooks/useAuth';
 import { EventCard } from '../Cards/EventCard';
 
@@ -12,7 +12,8 @@ export const Events = () => {
 
   const navigate = useNavigate();
 
-  const { events } = useLoaderData() as EventsData;
+  const { events } = useEvents('');
+  console.log(events);
 
   return (
     <div>
@@ -36,7 +37,7 @@ export const Events = () => {
       )}
 
       <div className="flex gap-10">
-        {events.map(event => (
+        {events?.map(event => (
           <EventCard
             key={event.id}
             id={event.id}

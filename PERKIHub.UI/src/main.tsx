@@ -45,7 +45,6 @@ const router = createBrowserRouter([
         path: 'events',
         element: <Events />,
         errorElement: <ErrorPage />,
-        loader: onLoadEvents,
         children: [
           // {
           //   path: '/app/users/:userID',
