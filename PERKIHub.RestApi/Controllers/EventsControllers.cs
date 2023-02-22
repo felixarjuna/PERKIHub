@@ -1,6 +1,7 @@
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using PERKIHub.Contracts.Event;
+using PERKIHub.Domain.Common.Errors;
 using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Services;
 
@@ -102,6 +103,10 @@ public class EventsController : ApiController
 
     return result.Match(
       (res) => Ok(res),
-      err => Problem(err));
+      err => err[0] == Errors.Event.NotFound
+        ? Problem(
+          statusCode: StatusCodes.Status400BadRequest,
+          title: err[0].Description)
+        : Problem(err));
   }
 }

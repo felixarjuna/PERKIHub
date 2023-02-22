@@ -82,7 +82,14 @@ public class EventService : IEventService
 
     if (_event is null) return Errors.Event.NotFound;
 
+    if (_event.Participants.Contains(username))
+    {
+      return Errors.Event.UserAlreadyJoinEvent;
+    }
+
     List<string> participants = _event.Participants;
+    // Check if user already participated
+
     participants.Add(username);
 
     var updateEvent = Event.Create(
