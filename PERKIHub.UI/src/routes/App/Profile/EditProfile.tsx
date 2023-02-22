@@ -44,16 +44,20 @@ export function EditProfile() {
           />
         </div>
         <div className="mt-5 flex gap-4">
-          <button type="submit" className="button-cream">
-            Save
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="button-gray"
-          >
-            Cancel
-          </button>
+          <div className="w-24 bg-lightmaroon">
+            <button type="submit" className="button-cream">
+              Save
+            </button>
+          </div>
+          <div className="w-24 bg-cream">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="button-gray"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
 
         <div
