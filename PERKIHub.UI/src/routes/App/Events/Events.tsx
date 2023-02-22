@@ -13,7 +13,6 @@ export const Events = () => {
   const navigate = useNavigate();
 
   const { events } = useEvents('');
-  console.log(events);
 
   return (
     <div>

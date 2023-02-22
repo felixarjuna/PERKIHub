@@ -9,7 +9,7 @@ export const Homepage = () => {
         <h3 className="text-2xl mt-2">
           All in one place for our developed Apps.
         </h3>
-        <div className="my-10 flex gap-6 pb-10">
+        <div className="mt-10 flex gap-6 pb-10">
           <div className="bg-lightmaroon w-24 flex items-center justify-center">
             <NavLink to="/register" className="button-cream" type="button">
               Register
@@ -20,6 +20,10 @@ export const Homepage = () => {
               Login
             </NavLink>
           </div>
+        </div>
+
+        <div className="-mt-3 text-cream underline underline-offset-2">
+          <NavLink to="app/events/">Continue without Login</NavLink>
         </div>
       </div>
       <div></div>
