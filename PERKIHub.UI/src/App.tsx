@@ -8,7 +8,7 @@ function App() {
   const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
 
   return (
-    <div className="mx-16 my-5 p-10">
+    <div className="ml-16 p-10 mr-5">
       <div className="flex justify-end items-center gap-3">
         {user?.currentUser ? (
           <>
