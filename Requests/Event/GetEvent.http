@@ -1,6 +1,6 @@
 @host=http://localhost:5089
 
-GET {{host}}/events
+GET {{host}}/api/events
 
 ###
-GET {{host}}/events/4f0354b9-fdb9-424d-a810-96c9d26ebee9
+GET {{host}}/api/events/73974AC1-9F5D-43CE-A3CE-8D488487AF16

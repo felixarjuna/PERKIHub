@@ -1,5 +1,6 @@
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PERKIHub.Domain.Common.Errors;
 using PERKIHub.Domain.Entities;
 using PERKIHub.RestApi.Persistence;
@@ -70,5 +71,31 @@ public class EventService : IEventService
     await _context.SaveChangesAsync();
 
     return Result.Deleted;
+  }
+
+  public async Task<ErrorOr<Event>> JoinEvent(Guid id, string username)
+  {
+    var _event = _context
+      .PH_EventDef
+      .AsNoTracking()
+      .First(e => e.ID == id);
+
+    if (_event is null) return Errors.Event.NotFound;
+
+    List<string> participants = _event.Participants;
+    participants.Add(username);
+
+    var updateEvent = Event.Create(
+      _event.ID,
+      _event.Title,
+      _event.Date,
+      _event.Speaker,
+      _event.Topic,
+      participants);
+
+    _context.PH_EventDef.Update(updateEvent);
+    await _context.SaveChangesAsync();
+
+    return updateEvent;
   }
 }

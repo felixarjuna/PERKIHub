@@ -29,6 +29,8 @@ export const Events = () => {
       <div className="flex gap-10">
         {events.map((event) => (
           <EventCard
+            key={event.id}
+            id={event.id}
             title={event.title}
             date={event.date}
             speaker={event.speaker}

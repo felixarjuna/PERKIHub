@@ -30,7 +30,6 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LoginForm />,
     action: onEventSignIn(queryClient),
-    errorElement: <>Hello</>,
   },
   {
     path: '/register',

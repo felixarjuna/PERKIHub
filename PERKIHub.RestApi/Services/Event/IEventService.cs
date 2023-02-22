@@ -10,4 +10,5 @@ public interface IEventService
   ErrorOr<Event> GetEvent(Guid id);
   Task<ErrorOr<UpsertedEvent>> UpsertEvent(Event _event);
   Task<ErrorOr<Deleted>> DeleteEvent(Guid id);
+  Task<ErrorOr<Event>> JoinEvent(Guid id, string username);
 }

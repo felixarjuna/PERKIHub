@@ -66,7 +66,8 @@ export interface UpsertEventRequest{
   title: string,
   date: Date,
   speaker: string,
-  topic: string
+  topic: string,
+  participants: string[]
 }
 
 export interface EventResponse{

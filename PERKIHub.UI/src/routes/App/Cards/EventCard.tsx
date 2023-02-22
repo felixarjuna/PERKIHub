@@ -3,13 +3,14 @@ import { GiPublicSpeaker } from 'react-icons/gi';
 import { RiCalendarEventFill, RiDiscussFill } from 'react-icons/ri';
 
 interface EventCardProps {
+  id: string;
   title: string;
   date: string;
   speaker: string;
   topic: string;
 }
 
-export const EventCard = ({ title, date, speaker, topic }: EventCardProps) => {
+export const EventCard = ({ id, title, date, speaker, topic }: EventCardProps) => {
   const onUserJoin = () => {
     alert('You are part of the event now! 🎉');
   };

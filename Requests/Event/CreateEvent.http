@@ -1,6 +1,6 @@
 @host=http://localhost:5089
 
-POST {{host}}/events
+POST {{host}}/api/events
 Content-Type: application/json
 
 {

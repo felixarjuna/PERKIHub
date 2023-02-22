@@ -109,3 +109,7 @@ export const onLoadEvents = async({request}: ActionFunctionArgs) => {
   const events = await getEvents(q ?? "");
   return { events, q };
 }
+
+export const onUserJoin = () => {
+
+};

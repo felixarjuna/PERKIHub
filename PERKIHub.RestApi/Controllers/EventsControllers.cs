@@ -6,7 +6,7 @@ using PERKIHub.RestApi.Services;
 
 namespace PERKIHub.RestApi.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class EventsController : ApiController
 {
   private readonly IEventService _eventService;
@@ -90,6 +90,18 @@ public class EventsController : ApiController
     ErrorOr<Deleted> result = await _eventService.DeleteEvent(id);
     return result.Match(
       (res) => NoContent(),
+      err => Problem(err));
+  }
+
+  [HttpPost("join")]
+  public async Task<IActionResult> JoinEvent(JoinEventRequest request)
+  {
+    ErrorOr<Event> result = await _eventService.JoinEvent(
+      request.Id,
+      request.Username);
+
+    return result.Match(
+      (res) => Ok(res),
       err => Problem(err));
   }
 }
