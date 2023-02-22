@@ -1,5 +1,5 @@
 import { Form, useFetcher, useLoaderData } from 'react-router-dom';
-import { UserResponse } from '../../lib/api/contracts';
+import { UserResponse } from '../../../lib/api/contracts';
 
 interface Contact {
   avatar: string;
@@ -12,7 +12,7 @@ interface FavoriteProps {
   contact: Contact;
 }
 
-export default function User() {
+export function Profile() {
   const contact = {
     avatar: 'https://placekitten.com/g/200/200',
     twitter: 'your_handle',
@@ -58,7 +58,7 @@ export default function User() {
           <Form
             method="post"
             action="delete"
-            onSubmit={(event) => {
+            onSubmit={event => {
               if (!confirm('Please confirm you want to delete this record.')) {
                 event.preventDefault();
               }

@@ -10,11 +10,11 @@ import {
   onCreateEvent,
   onEventRegister,
   onEventSignIn,
-  onLoadEvents,
 } from './lib/events/events';
 import { AuthProvider } from './lib/hooks/useAuth';
 import { CreateEventForm } from './routes/App/Events/CreateEventForm';
 import { Events } from './routes/App/Events/Events';
+import { EditProfile } from './routes/App/Profile/EditProfile';
 import { LoginForm } from './routes/Authentication/LoginForm';
 import { RegisterForm } from './routes/Authentication/RegisterForm';
 import { Homepage } from './routes/Homepage/Homepage';
@@ -68,6 +68,10 @@ const router = createBrowserRouter([
         action: ({ request, params }) => onCreateEvent({ request, params }),
       },
     ],
+  },
+  {
+    path: 'profile',
+    element: <EditProfile />,
   },
 ]);
 
