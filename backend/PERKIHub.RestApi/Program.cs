@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
     options.AddPolicy(
       name: allowAllOrigins,
       builder => builder
-        .WithOrigins("http://localhost:5173")
+        .WithOrigins("*")
         .AllowAnyMethod()
         .AllowAnyHeader());
   });

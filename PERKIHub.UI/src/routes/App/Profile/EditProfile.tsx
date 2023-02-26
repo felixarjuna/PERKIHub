@@ -3,11 +3,11 @@ import { Form, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../lib/hooks/useAuth';
 
 export function EditProfile() {
-  const user = useAuth();
+  const { currentUser, onChangeUser } = useAuth();
   const navigate = useNavigate();
 
   const onLogout = () => {
-    user?.setCurrentUser(null);
+    onChangeUser(null);
     navigate(-1);
   };
 
@@ -21,7 +21,7 @@ export function EditProfile() {
             aria-label="First name"
             type="text"
             name="firstName"
-            defaultValue={user?.currentUser?.firstName}
+            defaultValue={currentUser?.firstName}
             className="text-input w-[14.5rem]"
           />
           <input
@@ -29,7 +29,7 @@ export function EditProfile() {
             aria-label="Last name"
             type="text"
             name="lastName"
-            defaultValue={user?.currentUser?.lastName}
+            defaultValue={currentUser?.lastName}
             className="text-input w-[14.5rem]"
           />
         </div>
@@ -39,7 +39,7 @@ export function EditProfile() {
             type="text"
             name="email"
             placeholder="@jack"
-            defaultValue={user?.currentUser?.email}
+            defaultValue={currentUser?.email}
             className="text-input w-[30rem]"
           />
         </div>

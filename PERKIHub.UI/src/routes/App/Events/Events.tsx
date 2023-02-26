@@ -7,8 +7,8 @@ import { EventCard } from '../Cards/EventCard';
 const AUTHORIZED_USERS = ['Felix Arjuna'];
 
 export const Events = () => {
-  const user = useAuth();
-  const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
+  const { currentUser } = useAuth();
+  const name = `${currentUser?.firstName} ${currentUser?.lastName}`;
 
   const navigate = useNavigate();
 

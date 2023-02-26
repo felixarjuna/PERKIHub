@@ -1,9 +1,9 @@
 import React from 'react';
-import { User } from '../api/contracts';
+import { User } from "../api/contracts";
 
 interface CurrentUserContextType {
   currentUser: User | null;
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  onChangeUser: (user: User | null) => void;
 }
 
 interface useAuthProps {
@@ -17,13 +17,22 @@ const CurrentUserContext = React.createContext<CurrentUserContextType | null>(
 export const AuthProvider = ({ children }: useAuthProps) => {
   const [currentUser, setCurrentUser] = React.useState<User | null>(null);
 
+  const onChangeUser = (user: User | null) => {
+    setCurrentUser(user);
+  };
+
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, onChangeUser }}>
       {children}
     </CurrentUserContext.Provider>
   );
 };
 
 export const useAuth = () => {
-  return React.useContext(CurrentUserContext);
+  const currentUserContext = React.useContext(CurrentUserContext);
+  if (currentUserContext == null) {
+    throw new Error('Use Context under the provider');
+  }
+
+  return currentUserContext;
 };

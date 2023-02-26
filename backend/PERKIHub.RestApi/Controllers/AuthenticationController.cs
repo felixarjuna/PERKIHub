@@ -6,7 +6,7 @@ using PERKIHub.RestApi.Services.Authentication;
 
 namespace PERKIHub.RestApi.Controllers;
 
-[Route("auth")]
+[Route("api/auth")]
 public class AuthenticationController : ApiController
 {
   private readonly IAuthenticationService _authService;

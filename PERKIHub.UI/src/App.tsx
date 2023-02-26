@@ -4,23 +4,23 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from './lib/hooks/useAuth';
 
 function App() {
-  const user = useAuth();
-  const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
+  const { currentUser } = useAuth();
+  const name = `${currentUser?.firstName} ${currentUser?.lastName}`;
 
   return (
     <div className="ml-16 p-10 mr-5">
       <div className="flex justify-end items-center gap-3">
-        {user?.currentUser ? (
+        {currentUser ? (
           <>
             <h3 className="text-2xl">
-              Welcome, <span>{user?.currentUser ? name : 'User'}</span>!
+              Welcome, <span>{currentUser ? name : 'User'}</span>!
             </h3>
             <NavLink to={'/profile'} className="text-3xl">
               <CgProfile />
             </NavLink>
           </>
         ) : (
-          <div className="flex gap-10 text-2xl">
+          <div className="flex gap-10 text-xl">
             <NavLink to="/login" className="text-cream flex items-center gap-1">
               Log in
               <FiLogIn />

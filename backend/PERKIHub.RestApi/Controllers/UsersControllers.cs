@@ -5,7 +5,7 @@ using PERKIHub.RestApi.Services;
 
 namespace PERKIHub.RestApi.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class UsersController : ApiController
 {
   private readonly IUserService _userService;

@@ -3,17 +3,18 @@ import React from 'react';
 import { Form, NavLink, useActionData, useNavigate } from 'react-router-dom';
 import { ErrorResponse } from '../../lib/api/contracts';
 import { useAuth } from '../../lib/hooks/useAuth';
-import { User } from '../../lib/models/User';
+import { isUser } from './functions';
 
 export const LoginForm = () => {
   const authResult = useActionData();
-  const user = useAuth();
+  const { onChangeUser } = useAuth();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (authResult instanceof User) {
-      user?.setCurrentUser(authResult);
+    if (isUser(authResult)) {
+      console.log(authResult);
+      onChangeUser(authResult);
       navigate('/app/events');
     }
 

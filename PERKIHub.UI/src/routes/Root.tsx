@@ -5,7 +5,7 @@ import {
   Outlet,
   useLoaderData,
   useNavigation,
-  useSubmit,
+  useSubmit
 } from 'react-router-dom';
 import { UserResponse } from '../lib/api/contracts';
 
@@ -44,7 +44,7 @@ export default function Root() {
               className={searching ? 'loading' : 'text-input'}
               defaultValue={q}
               value={query}
-              onChange={(e) => {
+              onChange={e => {
                 setQuery(e.target.value);
                 const isFirstSearch = q == null;
                 submit(e.currentTarget.form, {
@@ -68,7 +68,7 @@ export default function Root() {
         <nav>
           {users.length ? (
             <ul>
-              {users.map((user) => (
+              {users.map(user => (
                 <li key={user.id}>
                   <NavLink
                     to={`users/${user.id}`}

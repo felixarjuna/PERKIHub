@@ -23,15 +23,15 @@ export const EventCard = ({
   topic,
   participants,
 }: EventCardProps) => {
-  const user = useAuth();
-  const name = `${user?.currentUser?.firstName} ${user?.currentUser?.lastName}`;
+  const { currentUser } = useAuth();
+  const name = `${currentUser?.firstName} ${currentUser?.lastName}`;
 
   const navigate = useNavigate();
   const location = useLocation();
   const { onJoinEvent } = useJoinEvent();
   const onUserJoin = () => {
     // Check if user already login
-    if (user?.currentUser === null) {
+    if (currentUser === null) {
       // If not navigate login page
       return navigate('/login', { state: { from: location }, replace: true });
     }
