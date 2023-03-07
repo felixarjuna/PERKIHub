@@ -1,1 +1,1 @@
-DELETE http://localhost:5089/users/15F25C4C-21B2-4CA1-B6D2-65ADB318AF95
+DELETE http://localhost:5200/api/users/ae0c61df-b91c-40d8-9dfc-5c3892ee6d55

@@ -1,6 +1,10 @@
-@host=http://localhost:5089
+@host=https://perkihub.azurewebsites.net
 
 GET {{host}}/api/events
 
 ###
-GET {{host}}/api/events/73974AC1-9F5D-43CE-A3CE-8D488487AF16
+GET {{host}}/api/events/6070ee36-fdc9-4c9b-a620-2091a5e04e7c
+
+###
+ServerAdminLogin: perkihub
+Passwowrd: matiusmarkus18!
