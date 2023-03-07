@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/weatherforecast":
+      "/api":
        {
-        target: "http://localhost:5089",
+        target: "http://40.67.222.109",
         changeOrigin: true,
         secure:false
        }

@@ -30,8 +30,7 @@ export const signIn = async (request: SignInRequest): Promise<UserResponse> => {
 
 export const register = async (
   request: RegisterRequest
-): Promise<UserResponse> => {
-  const response = await apiClient.post('/api/auth/register', request);
+): Promise<UserResponse> => {  const response = await apiClient.post('/api/auth/register', request);
   return response.data;
 };
 
