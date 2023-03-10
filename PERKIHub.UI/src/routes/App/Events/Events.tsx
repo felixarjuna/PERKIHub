@@ -15,16 +15,16 @@ export const Events = () => {
   const { events } = useEvents('');
 
   return (
-    <div>
-      <div className="mt-10">
-        <h1 className="text-6xl text-gradient">Events</h1>
-        <h3 className="mt-10 text-4xl">This Week</h3>
+    <div className="p-8 sm:px-20">
+      <div className="sm:mt-10">
+        <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
+        <h3 className="text-xl mt-3 sm:mt-10 sm:text-4xl">This Week</h3>
       </div>
 
       {AUTHORIZED_USERS.includes(name) ? (
-        <div className="mt-7 w-44 bg-lightmaroon">
+        <div className="mt-7 w-36 sm:w-44 bg-lightmaroon">
           <div
-            className="mt-4 flex items-center gap-3 cursor-pointer button-cream w-44 justify-center"
+            className="mt-4 flex items-center gap-3 cursor-pointer button-cream w-36 sm:w-44 justify-center"
             onClick={() => navigate('create')}
           >
             <BsFillCalendarPlusFill />

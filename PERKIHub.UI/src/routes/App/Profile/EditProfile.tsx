@@ -12,35 +12,42 @@ export function EditProfile() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <Form method="post" id="contact-form">
+    <div className="flex items-center justify-center h-screen w-screen p-8 flex-col">
+      <Form
+        method="post"
+        id="contact-form"
+        className="w-screen p-8 sm:max-w-lg"
+      >
         <div className="flex items-center gap-4">
-          <span>Name</span>
+          <span className="grow sm:grow-0 sm:w-24">Name</span>
           <input
             placeholder="First"
             aria-label="First name"
             type="text"
             name="firstName"
             defaultValue={currentUser?.firstName}
-            className="text-input w-[14.5rem]"
+            className="text-input w-[13rem] sm:grow"
           />
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="grow sm:grow-0 sm:w-24">Last name</span>
           <input
             placeholder="Last"
             aria-label="Last name"
             type="text"
             name="lastName"
             defaultValue={currentUser?.lastName}
-            className="text-input w-[14.5rem]"
+            className="text-input w-[13rem] sm:grow"
           />
         </div>
         <div className="flex items-center gap-4">
-          <span>Email</span>
+          <span className="grow sm:grow-0 sm:w-24">Email</span>
           <input
             type="text"
             name="email"
             placeholder="@jack"
             defaultValue={currentUser?.email}
-            className="text-input w-[30rem]"
+            className="text-input w-[13rem] sm:grow"
           />
         </div>
         <div className="mt-5 flex gap-4">
@@ -59,15 +66,15 @@ export function EditProfile() {
             </button>
           </div>
         </div>
-
-        <div
-          className="self-end text-2xl flex items-center gap-2 cursor-pointer"
-          onClick={onLogout}
-        >
-          <p>Log out</p>
-          <FiLogOut />
-        </div>
       </Form>
+
+      <div
+        className="absolute right-10 bottom-10 flex text-xl sm:text-2xl items-center gap-2 cursor-pointer"
+        onClick={onLogout}
+      >
+        <p>Log out</p>
+        <FiLogOut />
+      </div>
     </div>
   );
 }

@@ -25,19 +25,22 @@ export const LoginForm = () => {
   }, [authResult]);
 
   return (
-    <div className="flex flex-col justify-center w-screen items-center h-screen">
+    <div className="flex flex-col justify-center w-screen h-screen p-8">
       <div>
-        <h1 className="text-4xl">Sign in to PerkiHub</h1>
+        <h1 className="text-2xl sm:text-4xl sm:text-center">
+          Sign in to <span className="text-gradient-soft">PerkiHub</span>
+        </h1>
       </div>
-      <div className="px-8 py-8 flex">
-        <Form method="post">
-          <div className="flex flex-col w-96">
+
+      <div className="mt-2 mb-8 sm:my-10 flex">
+        <Form method="post" className="w-screen sm:max-w-lg sm:mx-auto">
+          <div className="flex flex-col">
             {axios.isAxiosError(authResult) && (
               <p className="text-lightmaroon">{errorMessage}</p>
             )}
             <div className="flex flex-col">
               <label
-                className="my-2 flex items-start font-unbounded font-light text-sm"
+                className="my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                 htmlFor="email-field"
               >
                 Username or email address
@@ -45,14 +48,14 @@ export const LoginForm = () => {
               <input
                 id="email-field"
                 type="text"
-                className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none"
+                className="text-input"
                 name="email"
               />
             </div>
 
             <div className="flex flex-col mt-4">
               <label
-                className="my-2 flex items-start font-unbounded font-light text-sm"
+                className="my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                 htmlFor="password-field"
               >
                 Password
@@ -60,7 +63,7 @@ export const LoginForm = () => {
               <input
                 id="password-field"
                 type="password"
-                className="p-2 block mt-1 bg-tundora-900  focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none font-unbounded"
+                className="text-input text-2xl"
                 name="password"
               />
             </div>
@@ -73,7 +76,7 @@ export const LoginForm = () => {
       </div>
 
       <div>
-        <p>
+        <p className="text-center">
           New to PerkiHub?{' '}
           <NavLink to="/register" className="underline underline-offset-2">
             Create an account.

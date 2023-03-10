@@ -1,1 +1,1 @@
-DELETE http://localhost:5200/api/users/ae0c61df-b91c-40d8-9dfc-5c3892ee6d55
+DELETE https://perkihub.azurewebsites.net/api/users/68c79d0f-de71-410a-82f8-9dc4718b637a

@@ -20,23 +20,29 @@ export const RegisterForm = () => {
   }, [authResult]);
 
   return (
-    <div className="flex flex-col justify-center w-screen items-center h-screen">
-      <div>
-        <h1 className="text-4xl">Register to PerkiHub</h1>
+    <div className="flex flex-col justify-center w-screen h-screen p-8">
+      <div className="mt-10 sm:m-0">
+        <h1 className="text-2xl sm:text-4xl sm:text-center">
+          Register to <span className="text-gradient-soft">PerkiHub</span>
+        </h1>
       </div>
-      <div className="px-8 py-8 flex">
-        <Form method="post">
-          <div className="flex flex-col w-96">
+
+      <div className="mb-8 flex">
+        <Form
+          method="post"
+          className="mt-5 sm:mt-10 w-screen sm:max-w-lg sm:mx-auto"
+        >
+          <div className="flex flex-col">
             {authResult != undefined && (
-              <div className="p-2 border-2 border-lightmaroon mb-4">
+              <div className="p-2 border-[1px] sm:border-2 border-lightmaroon mb-4">
                 {message}
               </div>
             )}
 
-            <div className="flex gap-3">
-              <div className="w-1/2">
+            <div className="flex-1 flex gap-3 flex-col sm:flex-row">
+              <div className="w-full sm:w-1/2">
                 <label
-                  className="my-2 flex items-start font-unbounded font-light text-sm"
+                  className="sm:my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                   htmlFor="firstname"
                 >
                   First name
@@ -44,14 +50,14 @@ export const RegisterForm = () => {
                 <input
                   id="firstname"
                   type="text"
-                  className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none w-full"
+                  className="text-input w-full"
                   name="firstname"
                   required
                 />
               </div>
-              <div>
+              <div className="sm:w-1/2">
                 <label
-                  className="my-2 flex items-start font-unbounded font-light text-sm"
+                  className="sm:my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                   htmlFor="lastname"
                 >
                   Last name
@@ -59,7 +65,7 @@ export const RegisterForm = () => {
                 <input
                   id="lastname"
                   type="text"
-                  className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none w-full"
+                  className="text-input w-full"
                   name="lastname"
                   required
                 />
@@ -68,7 +74,7 @@ export const RegisterForm = () => {
 
             <div className="flex flex-col my-4">
               <label
-                className="my-2 flex items-start font-unbounded font-light text-sm"
+                className="sm:my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                 htmlFor="email-field"
               >
                 Username or email address
@@ -76,7 +82,7 @@ export const RegisterForm = () => {
               <input
                 id="email-field"
                 type="text"
-                className="p-2 block mt-1 bg-tundora-900 focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none"
+                className="text-input"
                 name="email"
                 required
               />
@@ -84,7 +90,7 @@ export const RegisterForm = () => {
 
             <div className="flex flex-col">
               <label
-                className="my-2 flex items-start font-unbounded font-light text-sm"
+                className="sm:my-2 flex items-start font-unbounded font-light text-[0.8rem] sm:text-sm"
                 htmlFor="password-field"
               >
                 Password
@@ -92,7 +98,7 @@ export const RegisterForm = () => {
               <input
                 id="password-field"
                 type="password"
-                className="p-2 block mt-1 bg-tundora-900  focus:border-lightmaroon border-2 border-solid border-cream focus:outline-none font-unbounded"
+                className="text-input"
                 name="password"
                 required
               />
@@ -105,7 +111,7 @@ export const RegisterForm = () => {
         </Form>
       </div>
 
-      <div>
+      <div className="sm:mt-10 text-center">
         <p>
           Already have an account?{' '}
           <NavLink to="/login" className="underline underline-offset-2">

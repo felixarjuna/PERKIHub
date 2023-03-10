@@ -8,11 +8,11 @@ function App() {
   const name = `${currentUser?.firstName} ${currentUser?.lastName}`;
 
   return (
-    <div className="ml-16 p-10 mr-5">
-      <div className="flex justify-end items-center gap-3">
+    <div className="">
+      <div className="flex justify-end items-center gap-3 sm:ml-16 px-10 mt-10 sm:mr-5">
         {currentUser ? (
           <>
-            <h3 className="text-2xl">
+            <h3 className="sm:text-2xl">
               Welcome, <span>{currentUser ? name : 'User'}</span>!
             </h3>
             <NavLink to={'/profile'} className="text-3xl">
