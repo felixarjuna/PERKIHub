@@ -62,7 +62,7 @@ export const EventCard = ({
           <div className="flex items-center gap-2 mt-3">
             <RiCalendarEventFill />
             <p className="opacity-80 text-[0.7rem] font-unbounded">
-              {eventDate.toLocaleString()}
+              {eventDate.toLocaleDateString()}
             </p>
           </div>
           <div className="my-1 flex items-center gap-2">
@@ -85,12 +85,12 @@ export const EventCard = ({
           <div className="bg-cream w-full sm:w-24">
             <button
               className={
-                participants.includes(name)
+                participants.includes(name) || eventDate < new Date()
                   ? 'button-cream hover:translate-x-0 hover:translate-y-0'
                   : 'button-maroon text-[1rem]'
               }
               onClick={onUserJoin}
-              disabled={participants.includes(name)}
+              disabled={participants.includes(name) || eventDate < new Date()}
             >
               {participants.includes(name) ? `Joined` : 'Join'}
             </button>
