@@ -1,5 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
+import { isEmpty } from "lodash";
 import { ActionFunctionArgs, Params, redirect } from 'react-router-dom';
 import {
   createEvent,
@@ -9,13 +10,13 @@ import {
   getUsers,
   register,
   signIn,
-  updateUser,
+  updateUser
 } from '../api/api';
 import {
   CreateEventRequest,
   RegisterRequest,
   SignInRequest,
-  UpsertUserRequest,
+  UpsertUserRequest
 } from '../api/contracts';
 import { User } from '../models/User';
 
@@ -37,7 +38,10 @@ export const onEventSignIn =
     const signInRequest = Object.fromEntries(
       formData
     ) as unknown as SignInRequest;
-
+    const user = JSON.parse(localStorage.getItem('user') || '[]');
+    if (!isEmpty(user)) {
+      return user
+    }
     try {
       const response = await signIn(signInRequest);
       const user = new User(
@@ -45,6 +49,7 @@ export const onEventSignIn =
         response.lastName,
         response.email
       );
+      localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -69,6 +74,7 @@ export const onEventRegister = async ({
       response.lastName,
       response.email
     );
+    localStorage.setItem('user', JSON.stringify(user));
     return user;
   } catch (err) {
     return err;

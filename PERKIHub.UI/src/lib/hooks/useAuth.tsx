@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import React from 'react';
 import { User } from "../api/contracts";
 
@@ -20,6 +21,13 @@ export const AuthProvider = ({ children }: useAuthProps) => {
   const onChangeUser = (user: User | null) => {
     setCurrentUser(user);
   };
+
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') || '[]');
+    if (!isEmpty(user)) {
+      setCurrentUser(user)
+    }
+  }, [])
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, onChangeUser }}>
