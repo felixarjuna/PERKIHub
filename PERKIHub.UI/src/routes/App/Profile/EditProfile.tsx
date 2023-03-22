@@ -6,7 +6,8 @@ export function EditProfile() {
   const { currentUser, onChangeUser } = useAuth();
   const navigate = useNavigate();
 
-  const onLogout = () => {
+  const onLogout = () => {+
+    localStorage.removeItem('user');
     onChangeUser(null);
     navigate(-1);
   };

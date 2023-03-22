@@ -16,13 +16,12 @@ export const Events = () => {
 
   return (
     <div className="p-8 sm:px-20">
-      <div className="sm:mt-10">
-        <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
-        <h3 className="text-xl mt-3 sm:mt-10 sm:text-4xl">This Week</h3>
+      <div className="sm:mt-10 mb-5">
+        <h1 className="text-3xl sm:text-6xl text-gradient">Events</h1>
       </div>
 
       {AUTHORIZED_USERS.includes(name) ? (
-        <div className="mt-7 w-36 sm:w-44 bg-lightmaroon">
+        <div className="my-7 w-36 sm:w-44 bg-lightmaroon">
           <div
             className="mt-4 flex items-center gap-3 cursor-pointer button-cream w-36 sm:w-44 justify-center"
             onClick={() => navigate('create')}
@@ -35,8 +34,11 @@ export const Events = () => {
         <></>
       )}
 
-      <div className="flex gap-10">
-        {events?.map(event => (
+      <div className="flex flex-wrap gap-7 justify-center sm:justify-start">
+        {events?.sort((a, b) => {
+          if (a.date > b.date) return -1
+          return 1
+        }).map(event => (
           <EventCard
             key={event.id}
             id={event.id}
