@@ -1,4 +1,4 @@
-@host=https://perkihub.azurewebsites.net
+@host=http://localhost:5089
 
 GET {{host}}/api/events
 

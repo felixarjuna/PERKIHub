@@ -1,7 +1,7 @@
-POST http://20.101.5.27/api/auth/login
+POST http://localhost:5089/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "felixarjuna@yahoo.com",
+  "email": "felixarjuna@ymail.com",
   "password": "hello123"
 }

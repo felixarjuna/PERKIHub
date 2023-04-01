@@ -1,4 +1,6 @@
-GET https://perkihub.azurewebsites.net/api/users
+@host=https://perkihub.azurewebsites.net
+# @host=http://localhost:5089
+GET {{host}}/api/users
 
 ###
 GET http://localhost:8000/api/users
