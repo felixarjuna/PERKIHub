@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useEvents } from "../../../lib/hooks/events/useEvents";
 import { useAuth } from "../../../lib/hooks/useAuth";
 import { EventCard } from "../Cards/EventCard";
-import { Banner } from "./Banner";
 
 const AUTHORIZED_USERS = ["Felix Arjuna"];
 
@@ -35,7 +34,11 @@ export const Events = () => {
         <></>
       )}
 
-      <Banner />
+      <div className="my-6 sm:m-0 sm:mt-10">
+        <p className="warning-component text-sm sm:text-xl">
+          All events can only joined one day before.
+        </p>
+      </div>
 
       <div className="flex flex-wrap gap-7 justify-center sm:justify-start">
         {events
