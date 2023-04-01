@@ -1,11 +1,12 @@
-import { BiChurch } from 'react-icons/bi';
-import { BsPeopleFill } from 'react-icons/bs';
-import { GiPublicSpeaker } from 'react-icons/gi';
-import { RiCalendarEventFill, RiDiscussFill } from 'react-icons/ri';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { JoinEventRequest } from '../../../lib/api/contracts';
-import { useJoinEvent } from '../../../lib/hooks/events/useEvents';
-import { useAuth } from '../../../lib/hooks/useAuth';
+import React from "react";
+import { BiChurch } from "react-icons/bi";
+import { BsPeopleFill } from "react-icons/bs";
+import { GiPublicSpeaker } from "react-icons/gi";
+import { RiCalendarEventFill, RiDiscussFill } from "react-icons/ri";
+import { useLocation, useNavigate } from "react-router-dom";
+import { JoinEventRequest } from "../../../lib/api/contracts";
+import { useJoinEvent } from "../../../lib/hooks/events/useEvents";
+import { useAuth } from "../../../lib/hooks/useAuth";
 
 interface EventCardProps {
   id: string;
@@ -34,7 +35,7 @@ export const EventCard = ({
     // Check if user already login
     if (currentUser === null) {
       // If not navigate login page
-      return navigate('/login', { state: { from: location }, replace: true });
+      return navigate("/login", { state: { from: location }, replace: true });
     }
 
     const request: JoinEventRequest = {
@@ -43,6 +44,18 @@ export const EventCard = ({
     };
     onJoinEvent.mutate(request);
   };
+
+  const [statusText, setStatusText] = React.useState<string>("Join");
+
+  React.useEffect(() => {
+    if (eventDate < new Date() && !participants.includes(name)) {
+      setStatusText("Closed");
+    }
+
+    if (participants.includes(name)) {
+      setStatusText("Joined");
+    }
+  }, [participants]);
 
   const eventDate = new Date(date);
   return (
@@ -86,13 +99,13 @@ export const EventCard = ({
             <button
               className={
                 participants.includes(name) || eventDate < new Date()
-                  ? 'button-cream hover:translate-x-0 hover:translate-y-0'
-                  : 'button-maroon text-[1rem]'
+                  ? "button-cream hover:translate-x-0 hover:translate-y-0"
+                  : "button-maroon text-[1rem]"
               }
               onClick={onUserJoin}
               disabled={participants.includes(name) || eventDate < new Date()}
             >
-              {participants.includes(name) ? `Joined` : 'Join'}
+              {statusText}
             </button>
           </div>
         </div>

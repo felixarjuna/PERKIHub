@@ -1,10 +1,10 @@
-import { Form, useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from "react-router-dom";
 
 export const CreateEventForm = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-10">
+    <div className="ml-20 mt-10">
       <Form method="post">
         <h2 className="text-7xl text-gradient">Create new event</h2>
         <div className="w-96">
