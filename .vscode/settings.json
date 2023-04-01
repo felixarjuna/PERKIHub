@@ -49,7 +49,7 @@
   "typescript.preferences.quoteStyle": "double",
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "workbench.colorTheme": "Visual Studio 2019 Dark",
-  "editor.fontSize": 13,
+  "editor.fontSize": 12,
   "workbench.iconTheme": "vscode-icons",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.codeActionsOnSave.rules": null,

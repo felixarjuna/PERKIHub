@@ -39,6 +39,7 @@ var app = builder.Build();
 
   app.UseHttpsRedirection();
   app.UseCors(allowAllOrigins);
+  app.UseAuthentication();
   app.UseAuthorization();
 
   app.MapControllers();
