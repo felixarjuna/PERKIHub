@@ -20,7 +20,7 @@ public class PerkiHubDbContext : DbContext
       .AddJsonFile("appsettings.json")
       .Build();
 
-    optionsBuilder.UseSqlServer(configuration.GetConnectionString("PerkiHubDbContext"));
+    optionsBuilder.UseSqlite(configuration.GetConnectionString("PerkiHubDbContext"));
   }
 
   protected override void OnModelCreating(ModelBuilder builder)
