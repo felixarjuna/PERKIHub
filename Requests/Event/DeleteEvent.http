@@ -1,5 +1,5 @@
-@host=http://localhost:5089
-DELETE {{host}}/api/events/e015fd4e-739b-4293-a3c8-b7edccebbcc7
+@host=https://perkihub.azurewebsites.net
+DELETE {{host}}/api/events/3a748159-c85c-4c00-adbf-feade54465cc
 
 ###
   {
