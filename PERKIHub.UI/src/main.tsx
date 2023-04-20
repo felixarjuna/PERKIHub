@@ -1,48 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
-import ErrorPage from './error-page';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./error-page";
 import {
   onCreateEvent,
   onEventRegister,
   onEventSignIn,
-} from './lib/events/events';
-import { AuthProvider } from './lib/hooks/useAuth';
-import { CreateEventForm } from './routes/App/Events/CreateEventForm';
-import { Events } from './routes/App/Events/Events';
-import { EditProfile } from './routes/App/Profile/EditProfile';
-import { LoginForm } from './routes/Authentication/LoginForm';
-import { RegisterForm } from './routes/Authentication/RegisterForm';
-import { Homepage } from './routes/Homepage/Homepage';
+} from "./lib/events/events";
+import { AuthProvider } from "./lib/hooks/useAuth";
+import App from "./routes/App/App";
+import { CreateEventForm } from "./routes/App/Events/CreateEventForm";
+import { Events } from "./routes/App/Events/Events";
+import { EditProfile } from "./routes/App/Profile/EditProfile";
+import { LoginForm } from "./routes/Authentication/LoginForm";
+import { RegisterForm } from "./routes/Authentication/RegisterForm";
+import { Homepage } from "./routes/Homepage/Homepage";
+import { ServicePlan } from "./routes/ServicePlan/ServicePlan";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Homepage />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <LoginForm />,
     action: onEventSignIn(queryClient),
   },
   {
-    path: '/register',
+    path: "/register",
     element: <RegisterForm />,
     action: onEventRegister,
   },
   {
-    path: 'app',
+    path: "app",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'events',
+        path: "events",
         element: <Events />,
         errorElement: <ErrorPage />,
         children: [
@@ -63,19 +64,20 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'events/create',
+        path: "events/create",
         element: <CreateEventForm />,
         action: ({ request, params }) => onCreateEvent({ request, params }),
       },
+      { path: "service", element: <ServicePlan /> },
     ],
   },
   {
-    path: 'profile',
+    path: "profile",
     element: <EditProfile />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>

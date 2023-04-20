@@ -1,7 +1,7 @@
-import { CgProfile } from 'react-icons/cg';
-import { FiLogIn } from 'react-icons/fi';
-import { NavLink, Outlet } from 'react-router-dom';
-import { useAuth } from './lib/hooks/useAuth';
+import { CgProfile } from "react-icons/cg";
+import { FiLogIn } from "react-icons/fi";
+import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "../../lib/hooks/useAuth";
 
 function App() {
   const { currentUser } = useAuth();
@@ -13,9 +13,9 @@ function App() {
         {currentUser ? (
           <>
             <h3 className="sm:text-2xl">
-              Welcome, <span>{currentUser ? name : 'User'}</span>!
+              Welcome, <span>{currentUser ? name : "User"}</span>!
             </h3>
-            <NavLink to={'/profile'} className="text-3xl">
+            <NavLink to={"/profile"} className="text-3xl">
               <CgProfile />
             </NavLink>
           </>

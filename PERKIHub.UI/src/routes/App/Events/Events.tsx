@@ -20,7 +20,7 @@ export const Events = () => {
   return (
     <div className="p-8 sm:px-20">
       <div className="sm:mt-10 mb-5">
-        <h1 className="text-3xl sm:text-6xl text-gradient">Events</h1>
+        <h1 className="text-3xl sm:text-6xl text-gradient-soft">Events</h1>
       </div>
 
       {AUTHORIZED_USERS.includes(name) ? (
