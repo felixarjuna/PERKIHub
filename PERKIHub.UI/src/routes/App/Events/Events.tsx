@@ -1,4 +1,7 @@
-import { BsFillCalendarPlusFill } from "react-icons/bs";
+import {
+  BsExclamationTriangleFill,
+  BsFillCalendarPlusFill,
+} from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useEvents } from "../../../lib/hooks/events/useEvents";
 import { useAuth } from "../../../lib/hooks/useAuth";
@@ -35,9 +38,10 @@ export const Events = () => {
       )}
 
       <div className="my-6 sm:m-0 sm:mt-10">
-        <p className="warning-component text-sm sm:text-xl">
-          All events can only joined one day before.
-        </p>
+        <div className="warning-component text-sm sm:text-xl items-center gap-2 inline-flex">
+          <BsExclamationTriangleFill />
+          <p className="">All events can only joined one day before.</p>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-7 justify-center sm:justify-start">

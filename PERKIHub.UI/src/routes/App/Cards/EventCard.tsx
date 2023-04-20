@@ -60,7 +60,7 @@ export const EventCard = ({
   const eventDate = new Date(date);
   return (
     <div className="sm:my-10 bg-cream border-2 border-cream w-96">
-      <div className="w-full border-[2px] sm:border-4 border-cream p-8 sm:p-10 bg-tundora-700 -translate-x-1 -translate-y-1">
+      <div className="w-full border-[2px] sm:border-4 border-cream p-6 sm:p-10 bg-tundora-700 -translate-x-1 -translate-y-1">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full border-2 flex items-center justify-center bg-maroon border-maroon">
             <BiChurch />
