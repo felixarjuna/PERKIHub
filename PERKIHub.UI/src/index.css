@@ -63,7 +63,7 @@
   }
 
   .warning-component {
-    @apply px-2 py-2 sm:px-4 sm:py-3 bg-parchment-400 border-2 border-parchment-300 rounded-md sm:inline;
+    @apply px-2 py-2 sm:px-4 sm:py-3 bg-parchment-400 border-2 border-parchment-300 rounded-sm sm:inline;
   }
 }
 
@@ -345,4 +345,22 @@ i {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.background-animate {
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
