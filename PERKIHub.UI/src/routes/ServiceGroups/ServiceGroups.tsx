@@ -1,6 +1,6 @@
 import { groupList } from "./data";
 
-export const ServicePlan = () => {
+export const ServiceGroups = () => {
   return (
     <div className="p-8 sm:px-20 text-center">
       <div className="text-4xl font-bold sm:text-6xl text-gradient-soft">

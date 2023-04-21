@@ -19,7 +19,7 @@ import { EditProfile } from "./routes/App/Profile/EditProfile";
 import { LoginForm } from "./routes/Authentication/LoginForm";
 import { RegisterForm } from "./routes/Authentication/RegisterForm";
 import { Homepage } from "./routes/Homepage/Homepage";
-import { ServicePlan } from "./routes/ServicePlan/ServicePlan";
+import { ServiceGroups } from "./routes/ServiceGroups/ServiceGroups";
 
 const queryClient = new QueryClient();
 
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         element: <CreateEventForm />,
         action: ({ request, params }) => onCreateEvent({ request, params }),
       },
-      { path: "service", element: <ServicePlan /> },
+      { path: "service", element: <ServiceGroups /> },
     ],
   },
   {

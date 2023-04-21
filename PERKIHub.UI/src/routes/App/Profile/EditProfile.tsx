@@ -98,7 +98,7 @@ export function EditProfile() {
       </Form>
 
       <div
-        className="absolute right-10 top-10 flex text-xl sm:text-2xl items-center gap-2 cursor-pointer"
+        className="absolute right-10 top-10 flex text-xl items-center gap-2 cursor-pointer"
         onClick={onLogout}
       >
         <p>Log out</p>
