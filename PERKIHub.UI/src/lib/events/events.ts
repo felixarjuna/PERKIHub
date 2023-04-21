@@ -1,7 +1,7 @@
-import { QueryClient } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
+import { QueryClient } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
 import { isEmpty } from "lodash";
-import { ActionFunctionArgs, Params, redirect } from 'react-router-dom';
+import { ActionFunctionArgs, Params, redirect } from "react-router-dom";
 import {
   createEvent,
   deleteUser,
@@ -10,15 +10,15 @@ import {
   getUsers,
   register,
   signIn,
-  updateUser
-} from '../api/api';
+  updateUser,
+} from "../api/api";
 import {
   CreateEventRequest,
   RegisterRequest,
   SignInRequest,
-  UpsertUserRequest
-} from '../api/contracts';
-import { User } from '../models/User';
+  UpsertUserRequest,
+} from "../api/contracts";
+import { User } from "../models/User";
 
 // ----------------------------------------------------------------------------
 //
@@ -38,18 +38,19 @@ export const onEventSignIn =
     const signInRequest = Object.fromEntries(
       formData
     ) as unknown as SignInRequest;
-    const user = JSON.parse(localStorage.getItem('user') || '[]');
+    const user = JSON.parse(localStorage.getItem("user") || "[]");
     if (!isEmpty(user)) {
-      return user
+      return user;
     }
     try {
       const response = await signIn(signInRequest);
       const user = new User(
+        response.id,
         response.firstName,
         response.lastName,
         response.email
       );
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(user));
       return user;
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -70,11 +71,12 @@ export const onEventRegister = async ({
   try {
     const response = await register(registerRequest);
     const user = new User(
+      response.id,
       response.firstName,
       response.lastName,
       response.email
     );
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
     return user;
   } catch (err) {
     return err;
@@ -88,17 +90,17 @@ export const onEventRegister = async ({
 // -----------------------------------------------------------------------------
 export const onLoadUsers = async ({ request }: ActionFunctionArgs) => {
   const url = new URL(request.url);
-  const q = url.searchParams.get('q');
-  const users = await getUsers(q ?? '');
+  const q = url.searchParams.get("q");
+  const users = await getUsers(q ?? "");
   return { users, q };
 };
 
 export const onCreateUser = async () => {
   const registerRequest: RegisterRequest = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   };
 
   const user = await register(registerRequest);
@@ -118,8 +120,7 @@ export const onUpdateUser = async ({ request, params }: ActionFunctionArgs) => {
     formData
   ) as unknown as UpsertUserRequest;
 
-  await updateUser(updateRequest);
-  return redirect(`/users/${params.userID}`);
+  return await updateUser(updateRequest);
 };
 
 export const onDeleteUser = async ({ userID }: Params<string>) => {
@@ -142,13 +143,13 @@ export const onCreateEvent = async ({
 
   await createEvent(createEventRequest);
 
-  return redirect('/app/events');
+  return redirect("/app/events");
 };
 
 export const onLoadEvents = async ({ request }: ActionFunctionArgs) => {
   const url = new URL(request.url);
-  const q = url.searchParams.get('q');
-  const events = await getEvents(q ?? '');
+  const q = url.searchParams.get("q");
+  const events = await getEvents(q ?? "");
   return { events, q };
 };
 

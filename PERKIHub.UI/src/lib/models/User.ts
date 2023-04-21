@@ -1,12 +1,13 @@
-export class User{
-  private firstName:string;
+export class User {
+  private id: string;
+  private firstName: string;
   private lastName: string;
   private email: string;
 
-  constructor(firstName: string, lastName: string, email: string)
-  {
+  constructor(id: string, firstName: string, lastName: string, email: string) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.email = email
+    this.email = email;
   }
 }

@@ -3,12 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./error-page";
 import {
   onCreateEvent,
   onEventRegister,
   onEventSignIn,
+  onUpdateUser,
 } from "./lib/events/events";
 import { AuthProvider } from "./lib/hooks/useAuth";
 import App from "./routes/App/App";
@@ -74,6 +75,7 @@ const router = createBrowserRouter([
   {
     path: "profile",
     element: <EditProfile />,
+    action: ({ request, params }) => onUpdateUser({ request, params }),
   },
 ]);
 
