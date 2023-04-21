@@ -34,7 +34,7 @@ function App() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           className={
-            "absolute top-0 pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen z-10"
+            "pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen z-10 fixed inset-0"
           }
         >
           <div
