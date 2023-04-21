@@ -77,7 +77,7 @@ function App() {
               <h3 className="sm:text-2xl">
                 Welcome, <span>{currentUser ? name : "User"}</span>!
               </h3>
-              <NavLink to={"/profile"} className="text-3xl">
+              <NavLink to={"/profile"} className="w-10 text-3xl">
                 <CgProfile />
               </NavLink>
             </>

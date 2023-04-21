@@ -1,5 +1,7 @@
 import { HttpStatusCode } from "axios";
-import { FiLogOut } from "react-icons/fi";
+import React from "react";
+import { CgProfile } from "react-icons/cg";
+import { FiLogOut, FiUpload } from "react-icons/fi";
 import { Form, useActionData, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../lib/hooks/useAuth";
 
@@ -14,6 +16,9 @@ export function EditProfile() {
     onChangeUser(null);
     navigate(-1);
   };
+
+  const [profilePicture, setProfilePicture] = React.useState<File | null>(null);
+  const uploadInput = React.useRef<HTMLInputElement | null>(null);
 
   return (
     <div className="flex items-center justify-center h-screen w-screen p-8 flex-col">
@@ -40,7 +45,37 @@ export function EditProfile() {
           />
         </div>
         <div className="flex items-center gap-4">
-          <span className="grow sm:grow-0 sm:w-24">Name</span>
+          <span className="grow sm:grow-0 sm:w-24 text-3xl">
+            {profilePicture ? (
+              <img
+                src={URL.createObjectURL(profilePicture)}
+                className="w-20 h-20 rounded-full border-2 border-cream box-border"
+              />
+            ) : (
+              <CgProfile />
+            )}
+          </span>
+
+          <div
+            className="text-input w-[13rem] sm:grow flex gap-3"
+            onClick={e => uploadInput.current?.click()}
+          >
+            <FiUpload className="text-2xl" />
+            Upload File
+          </div>
+          <input
+            type="file"
+            name="profilePicture"
+            className="hidden"
+            ref={uploadInput}
+            onChange={e => {
+              const files = e.target.files;
+              if (files) setProfilePicture(files[0]);
+            }}
+          />
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="grow sm:grow-0 sm:w-24">First name</span>
           <input
             placeholder="First"
             aria-label="First name"
