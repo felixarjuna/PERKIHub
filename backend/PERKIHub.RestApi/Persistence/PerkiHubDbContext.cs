@@ -12,6 +12,7 @@ public class PerkiHubDbContext : DbContext
 
   public DbSet<User> PH_UserDef { get; set; } = null!;
   public DbSet<Event> PH_EventDef { get; set; } = null!;
+  public DbSet<ProfilePicture> PH_ProfilePictureDef { get; set; } = null!;
 
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http;
+
 namespace PERKIHub.Contracts.User;
 
 public record UpsertUserRequest(

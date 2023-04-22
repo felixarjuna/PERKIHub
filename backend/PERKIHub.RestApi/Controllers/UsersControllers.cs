@@ -23,7 +23,7 @@ public class UsersController : ApiController
   }
 
   [HttpGet("{id}")]
-  public IActionResult GetUsers(Guid id)
+  public IActionResult GetUser(Guid id)
   {
     var result = _userService.GetUser(id);
 
@@ -45,16 +45,20 @@ public class UsersController : ApiController
       return BadRequest();
     }
 
-    var user = Domain.Entities.User.Create(
+    var result = await _userService.UpsertUser(
       request.ID,
       request.FirstName,
       request.LastName,
       request.Email,
       request.Password);
 
-    var result = await _userService.UpsertUser(user);
     return result.Match(
-      (res) => NoContent(),
+      (res) => Ok(new UserResponse(
+        request.ID,
+        request.FirstName,
+        request.LastName,
+        request.Email,
+        "")),
       err => Problem(err));
   }
 
@@ -65,5 +69,26 @@ public class UsersController : ApiController
     return result.Match(
       (res) => NoContent(),
       err => Problem(err));
+  }
+
+  [HttpPost("profile-picture/{id}")]
+  public async Task<IActionResult> UpsertProfilePicture(Guid id, [FromForm] UpsertProfilePictureRequest request)
+  {
+    ErrorOr<UpsertedProfilePicture> result = await _userService.UpsertProfilePicture(id, request.ProfilePicture);
+
+    return result.Match(
+      (res) => res.IsNewlyCreated ? CreatedAtAction(
+        actionName: nameof(GetUser),
+        routeValues: new { id = request.ID },
+        value: request.ProfilePicture) : NoContent(),
+      (err) => Problem(err));
+  }
+
+  [HttpGet("profile-picture/{id}")]
+  public IActionResult GetProfilePicture(Guid id)
+  {
+    var result = _userService.GetProfilePicture(id);
+    if (result is not null) return new FileContentResult(result.File, result.ContentType);
+    return Ok();
   }
 }

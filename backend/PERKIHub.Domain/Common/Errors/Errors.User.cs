@@ -12,5 +12,10 @@ public static partial class Errors
     public static Error NotFound => Error.NotFound(
       code: "User.NotFound",
       description: "User not found.");
+
+    public static Error ProfilePictureTooBig => Error.Failure(
+      code: "User:ProfilePictureTooLarge",
+      description: "Profile picture file too big."
+    );
   }
 }
