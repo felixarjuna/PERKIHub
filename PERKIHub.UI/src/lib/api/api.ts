@@ -64,7 +64,7 @@ export const deleteUser = async (userID: string) => {
   return response.data;
 };
 
-export const getUserProfilePicture = async (userID: string) => {
+export const getUserProfilePicture = async (userID: string): Promise<File> => {
   const response = await apiClient.get(`/api/users/profile-picture/${userID}`, {
     responseType: "blob",
   });

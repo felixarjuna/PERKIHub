@@ -54,6 +54,7 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  profilePicture: File | null;
 }
 
 // -----------------------------------------------------------------------------

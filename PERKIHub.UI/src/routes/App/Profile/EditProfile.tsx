@@ -1,9 +1,9 @@
 import React from "react";
-import { CgProfile } from "react-icons/cg";
-import { FiLogOut, FiUpload } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 import { Form, useNavigate } from "react-router-dom";
 import { UpsertProfilePictureRequest } from "../../../lib/api/contracts";
 import { useAuth } from "../../../lib/hooks/useAuth";
+import { ProfilePictureInput } from "./ProfilePictureInput";
 import { useProfile } from "./hooks/useProfile";
 
 export function EditProfile() {
@@ -15,8 +15,6 @@ export function EditProfile() {
     onChangeUser(null);
     navigate(-1);
   };
-
-  const uploadInput = React.useRef<HTMLInputElement | null>(null);
 
   const [userInput, setUserInput] = React.useState<{
     id: string;
@@ -34,8 +32,9 @@ export function EditProfile() {
     password: "",
   });
 
-  const { onUpdateProfile, profilePicture, onUpdateProfilePicture } =
+  const { onUpdateProfile, onUpdateProfilePicture, profilePicture } =
     useProfile(currentUser?.id ?? "");
+
   React.useEffect(() => {
     setUserInput(prevValue => ({
       ...prevValue,
@@ -45,10 +44,6 @@ export function EditProfile() {
       email: currentUser?.email ?? "",
     }));
   }, [currentUser]);
-
-  React.useEffect(() => {
-    setUserInput(prevValue => ({ ...prevValue, profilePicture }));
-  }, []);
 
   const onSubmitUpdateUser = (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,38 +82,8 @@ export function EditProfile() {
             className="text-input w-[13rem] sm:grow"
           />
         </div>
-        <div className="flex items-center gap-4">
-          <span className="grow sm:grow-0 sm:w-24 text-3xl">
-            {userInput.profilePicture ? (
-              <img
-                src={URL.createObjectURL(userInput.profilePicture)}
-                className="w-20 h-20 rounded-full border-2 border-cream box-border"
-              />
-            ) : (
-              <CgProfile />
-            )}
-          </span>
 
-          <div
-            className="text-input w-[13rem] sm:grow flex gap-3"
-            onClick={e => uploadInput.current?.click()}
-          >
-            <FiUpload className="text-2xl" />
-            Upload File
-          </div>
-          <input
-            type="file"
-            name="profilePicture"
-            className="hidden"
-            ref={uploadInput}
-            onChange={e => {
-              const { name } = e.target;
-              const files = e.target.files;
-              if (files)
-                setUserInput(prevValue => ({ ...prevValue, [name]: files[0] }));
-            }}
-          />
-        </div>
+        <ProfilePictureInput file={profilePicture} />
 
         <div className="flex items-center gap-4">
           <span className="grow sm:grow-0 sm:w-24">First name</span>
