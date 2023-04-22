@@ -10,13 +10,13 @@ import { useAuth } from "../../../../lib/hooks/useAuth";
 
 export const useProfile = (userID: string) => {
   const queryClient = useQueryClient();
-  const { onChangeUser } = useAuth();
+  const { currentUser, onChangeUser } = useAuth();
 
   const onUpdateProfile = useMutation({
     mutationKey: ["update-profile"],
     mutationFn: updateUser,
     onSuccess: data => {
-      onChangeUser(data);
+      onChangeUser({ ...data, profilePicture: null });
     },
   });
 
@@ -27,6 +27,15 @@ export const useProfile = (userID: string) => {
     queryFn: () => getUserProfilePicture(userID),
     enabled: !isEmpty(userID),
     initialData: null,
+    onSuccess: data => {
+      onChangeUser({
+        id: currentUser?.id ?? "",
+        firstName: currentUser?.firstName ?? "",
+        lastName: currentUser?.lastName ?? "",
+        email: currentUser?.email ?? "",
+        profilePicture: data,
+      });
+    },
   });
 
   const onUpdateProfilePicture = useMutation({
