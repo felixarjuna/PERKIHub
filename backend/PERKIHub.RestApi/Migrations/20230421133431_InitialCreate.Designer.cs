@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PERKIHub.RestApi.Persistence;
 
@@ -10,9 +11,11 @@ using PERKIHub.RestApi.Persistence;
 namespace PERKIHub.RestApi.Migrations
 {
     [DbContext(typeof(PerkiHubDbContext))]
-    partial class PerkiHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230421133431_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
@@ -51,29 +54,6 @@ namespace PERKIHub.RestApi.Migrations
                     b.ToTable("PH_EventDef");
                 });
 
-            modelBuilder.Entity("PERKIHub.Domain.Entities.ProfilePicture", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ContentType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<byte[]>("File")
-                        .HasColumnType("BLOB");
-
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("PH_ProfilePictureDef");
-                });
-
             modelBuilder.Entity("PERKIHub.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("ID")
@@ -100,20 +80,12 @@ namespace PERKIHub.RestApi.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("BLOB");
+
                     b.HasKey("ID");
 
                     b.ToTable("PH_UserDef");
-                });
-
-            modelBuilder.Entity("PERKIHub.Domain.Entities.ProfilePicture", b =>
-                {
-                    b.HasOne("PERKIHub.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
