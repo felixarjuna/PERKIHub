@@ -26,6 +26,7 @@ export const useProfile = (userID: string) => {
     queryKey: ["profile-picture"],
     queryFn: () => getUserProfilePicture(userID),
     enabled: !isEmpty(userID),
+    initialData: null,
   });
 
   const onUpdateProfilePicture = useMutation({

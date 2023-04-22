@@ -43,9 +43,12 @@ export function EditProfile() {
       firstName: currentUser?.firstName ?? "",
       lastName: currentUser?.lastName ?? "",
       email: currentUser?.email ?? "",
-      profilePicture: profilePicture,
     }));
-  }, [currentUser, profilePicture]);
+  }, [currentUser]);
+
+  React.useEffect(() => {
+    setUserInput(prevValue => ({ ...prevValue, profilePicture }));
+  }, []);
 
   const onSubmitUpdateUser = (e: React.FormEvent) => {
     e.preventDefault();
@@ -184,6 +187,14 @@ export function EditProfile() {
           <div className="mt-1">
             <span className="text-lightmaroon sm:text-xl">
               User updated successfully! 🔥
+            </span>
+          </div>
+        )}
+
+        {(onUpdateProfile.isError || onUpdateProfilePicture.isError) && (
+          <div className="mt-1">
+            <span className="text-lightmaroon sm:text-xl">
+              User update failed! 🥺
             </span>
           </div>
         )}
