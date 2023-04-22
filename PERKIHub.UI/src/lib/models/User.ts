@@ -3,11 +3,19 @@ export class User {
   private firstName: string;
   private lastName: string;
   private email: string;
+  private profilePicture: Blob;
 
-  constructor(id: string, firstName: string, lastName: string, email: string) {
+  constructor(
+    id: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    profilePicture: Blob
+  ) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
+    this.profilePicture = profilePicture;
   }
 }

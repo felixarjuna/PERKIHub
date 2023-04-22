@@ -33,6 +33,7 @@ export interface UserResponse {
   lastName: string;
   email: string;
   token: string;
+  profilePicture: Blob;
 }
 
 export interface UpsertUserRequest {
@@ -41,6 +42,11 @@ export interface UpsertUserRequest {
   lastName: string;
   email: string;
   password: string;
+}
+
+export interface UpsertProfilePictureRequest {
+  id: string;
+  profilePicture: File | null;
 }
 
 export interface User {

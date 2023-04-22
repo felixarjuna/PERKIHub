@@ -9,7 +9,6 @@ import {
   onCreateEvent,
   onEventRegister,
   onEventSignIn,
-  onUpdateUser,
 } from "./lib/events/events";
 import { AuthProvider } from "./lib/hooks/useAuth";
 import App from "./routes/App/App";
@@ -75,7 +74,7 @@ const router = createBrowserRouter([
   {
     path: "profile",
     element: <EditProfile />,
-    action: ({ request, params }) => onUpdateUser({ request, params }),
+    // action: ({ request, params }) => onUpdateUser({ request, params }),
   },
 ]);
 

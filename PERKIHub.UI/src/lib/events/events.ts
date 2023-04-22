@@ -10,13 +10,11 @@ import {
   getUsers,
   register,
   signIn,
-  updateUser,
 } from "../api/api";
 import {
   CreateEventRequest,
   RegisterRequest,
   SignInRequest,
-  UpsertUserRequest,
 } from "../api/contracts";
 import { User } from "../models/User";
 
@@ -48,7 +46,8 @@ export const onEventSignIn =
         response.id,
         response.firstName,
         response.lastName,
-        response.email
+        response.email,
+        response.profilePicture
       );
       localStorage.setItem("user", JSON.stringify(user));
       return user;
@@ -74,7 +73,8 @@ export const onEventRegister = async ({
       response.id,
       response.firstName,
       response.lastName,
-      response.email
+      response.email,
+      response.profilePicture
     );
     localStorage.setItem("user", JSON.stringify(user));
     return user;
@@ -114,14 +114,14 @@ export const onLoadUser = async ({ userID }: Params<string>) => {
   }
 };
 
-export const onUpdateUser = async ({ request, params }: ActionFunctionArgs) => {
-  const formData = await request.formData();
-  const updateRequest = Object.fromEntries(
-    formData
-  ) as unknown as UpsertUserRequest;
+// export const onUpdateUser = async ({ request, params }: ActionFunctionArgs) => {
+//   const formData = await request.formData();
+//   const updateRequest = Object.fromEntries(
+//     formData
+//   ) as unknown as UpsertUserRequest;
 
-  return await updateUser(updateRequest);
-};
+//   return await updateUser(updateRequest);
+// };
 
 export const onDeleteUser = async ({ userID }: Params<string>) => {
   if (userID != undefined) await deleteUser(userID);

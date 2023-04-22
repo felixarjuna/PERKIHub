@@ -1,5 +1,5 @@
 import { isEmpty } from "lodash";
-import React from 'react';
+import React from "react";
 import { User } from "../api/contracts";
 
 interface CurrentUserContextType {
@@ -19,15 +19,16 @@ export const AuthProvider = ({ children }: useAuthProps) => {
   const [currentUser, setCurrentUser] = React.useState<User | null>(null);
 
   const onChangeUser = (user: User | null) => {
+    localStorage.setItem("user", JSON.stringify(user));
     setCurrentUser(user);
   };
 
   React.useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user') || '[]');
+    const user = JSON.parse(localStorage.getItem("user") || "[]");
     if (!isEmpty(user)) {
-      setCurrentUser(user)
+      setCurrentUser(user);
     }
-  }, [])
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, onChangeUser }}>
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }: useAuthProps) => {
 export const useAuth = () => {
   const currentUserContext = React.useContext(CurrentUserContext);
   if (currentUserContext == null) {
-    throw new Error('Use Context under the provider');
+    throw new Error("Use Context under the provider");
   }
 
   return currentUserContext;

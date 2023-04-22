@@ -5,6 +5,7 @@ import {
   JoinEventRequest,
   RegisterRequest,
   SignInRequest,
+  UpsertProfilePictureRequest,
   UpsertUserRequest,
   UserResponse,
 } from "./contracts";
@@ -51,9 +52,11 @@ export const getUser = async (userID: string): Promise<UserResponse> => {
   return response.data;
 };
 
-export const updateUser = async (request: UpsertUserRequest) => {
+export const updateUser = async (
+  request: UpsertUserRequest
+): Promise<UpsertUserRequest> => {
   const response = await apiClient.put(`/api/users/${request.id}`, request);
-  return response.status;
+  return response.data;
 };
 
 export const deleteUser = async (userID: string) => {
@@ -61,6 +64,23 @@ export const deleteUser = async (userID: string) => {
   return response.data;
 };
 
+export const getUserProfilePicture = async (userID: string) => {
+  const response = await apiClient.get(`/api/users/profile-picture/${userID}`, {
+    responseType: "blob",
+  });
+  return response.data;
+};
+
+export const upsertProfilePicture = async (
+  request: UpsertProfilePictureRequest
+) => {
+  const response = await apiClient.post(
+    `/api/users/profile-picture/${request.id}`,
+    request,
+    { headers: { "Content-Type": "multipart/form-data" } }
+  );
+  return response.data;
+};
 // -----------------------------------------------------------------------------
 //
 //                                    Event
