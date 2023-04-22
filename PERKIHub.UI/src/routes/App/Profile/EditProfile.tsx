@@ -64,6 +64,10 @@ export function EditProfile() {
     setUserInput(prevValue => ({ ...prevValue, [name]: value }));
   };
 
+  const onChangeProfilePicture = (picture: File) => {
+    setUserInput(prevValue => ({ ...prevValue, profilePicture: picture }));
+  };
+
   return (
     <div className="flex items-center justify-center h-screen w-screen p-8 flex-col">
       <Form
@@ -83,7 +87,10 @@ export function EditProfile() {
           />
         </div>
 
-        <ProfilePictureInput file={profilePicture} />
+        <ProfilePictureInput
+          profilePicture={profilePicture}
+          onChangeProfilePicture={onChangeProfilePicture}
+        />
 
         <div className="flex items-center gap-4">
           <span className="grow sm:grow-0 sm:w-24">First name</span>
