@@ -4,3 +4,6 @@ GET {{host}}/api/users
 
 ###
 GET http://localhost:8000/api/users
+
+### Profile Picture
+GET {{host}}/api/users/profile-picture/90a25187-7f0a-4fd6-b8c6-7e8c01ea09c0

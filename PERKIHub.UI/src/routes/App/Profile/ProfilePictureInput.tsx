@@ -32,7 +32,7 @@ export const ProfilePictureInput = ({
             className="w-20 h-20 rounded-full border-2 border-cream box-border object-cover"
           />
         ) : (
-          <CgProfile />
+          <CgProfile className="w-20 h-20" />
         )}
       </span>
 

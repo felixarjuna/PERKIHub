@@ -21,7 +21,7 @@ export const Events = () => {
   return (
     <>
       {isLoading && (
-        <div className="flex gap-3 items-center justify-center bg-tundora-800 w-screen h-screen z-10 fixed inset-0">
+        <div className="flex gap-3 items-center justify-center bg-tundora-800 w-screen h-screen z-10 fixed inset-0 leading-4">
           <AiOutlineLoading3Quarters className="animate-spin w-6 h-6" />
           <p>Loading Content</p>
         </div>
