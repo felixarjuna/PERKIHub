@@ -21,15 +21,15 @@ export const Events = () => {
   return (
     <>
       {isLoading && (
-        <div className="flex gap-3 items-center justify-center bg-tundora-800 w-screen h-screen z-10 fixed inset-0 leading-4">
-          <AiOutlineLoading3Quarters className="animate-spin w-6 h-6" />
+        <div className="flex gap-3 items-center justify-center bg-tundora-800 w-screen h-screen z-20 fixed inset-0">
+          <AiOutlineLoading3Quarters className="animate-spin w-6 h-6 leading-6" />
           <p>Loading Content</p>
         </div>
       )}
 
       <div className="p-8 sm:px-20">
         <div className="sm:mt-10 mb-5">
-          <h1 className="text-4xl sm:text-6xl text-gradient-soft font-bold sm:font-normal tracking-wide">
+          <h1 className="text-2xl sm:text-6xl text-gradient-soft sm:font-normal font-maragsa">
             Events
           </h1>
         </div>
@@ -48,14 +48,22 @@ export const Events = () => {
           <></>
         )}
 
-        <div className="my-6 sm:m-0 sm:mt-10">
-          <div className="warning-component text-sm sm:text-xl items-center gap-2 inline-flex">
-            <BsExclamationTriangleFill />
-            <p className="">All events can only joined one day before.</p>
+        <div className="my-6 -mx-8 sm:m-0 sm:mt-10 sticky top-0 overflow-x-hidden z-10 bg-tundora-900">
+          <div className="p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap animate-marquee">
+            <span>
+              <BsExclamationTriangleFill className="text-lg" />
+            </span>
+            <span>All events can be registered only one day in advance.</span>
+          </div>
+          <div className="absolute top-0 p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap animate-marquee2">
+            <span>
+              <BsExclamationTriangleFill className="text-lg" />
+            </span>
+            <span>All events can be registered only one day in advance.</span>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-7 justify-center sm:justify-start">
+        <div className="flex flex-wrap gap-5 justify-center sm:justify-start">
           {events
             ?.sort((a, b) => {
               if (a.date > b.date) return -1;

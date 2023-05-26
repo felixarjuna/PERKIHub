@@ -7,6 +7,7 @@ module.exports = {
         unbounded: ["Unbounded", "sans-serif"],
         maragsa: ["Maragsa", "sans-serif"],
         inter: ["Inter", "serif"],
+        satoshi: ["Inter", "serif"],
       },
       colors: {
         "falu-red": {
@@ -55,6 +56,8 @@ module.exports = {
       },
       animation: {
         gradient: "gradient 3s ease infinite",
+        marquee: "marquee 10s linear infinite",
+        marquee2: "marquee2 10s linear infinite",
       },
       keyframes: {
         gradient: {
@@ -67,6 +70,14 @@ module.exports = {
           "100%": {
             "background-position": "0% 50%",
           },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },
