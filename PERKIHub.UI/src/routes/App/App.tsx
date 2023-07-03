@@ -24,7 +24,6 @@ function App() {
         >
           {!isShowed && <FaHamburger />}
         </div>
-
         <Transition
           show={isShowed}
           enter="transition-all duration-500"
@@ -33,9 +32,7 @@ function App() {
           leave="transition-opacity duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className={
-            "pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen z-10 fixed inset-0"
-          }
+          className={"pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen z-10 fixed inset-0"}
         >
           <div
             className="absolute top-20 text-2xl sm:text-3xl cursor-pointer"
@@ -52,9 +49,7 @@ function App() {
               }}
             >
               <BsFillCalendar2EventFill className="" />
-              <p className="hover:text-gradient-soft bg-400% animate-gradient">
-                Events
-              </p>
+              <p className="hover:text-gradient-soft bg-400% animate-gradient">Events</p>
             </li>
             <li
               className="flex gap-4 cursor-pointer items-center"
@@ -64,9 +59,7 @@ function App() {
               }}
             >
               <MdGroups />
-              <p className="hover:text-gradient-soft bg-400% animate-gradient">
-                Groups
-              </p>
+              <p className="hover:text-gradient-soft bg-400% animate-gradient">Groups</p>
             </li>
           </ul>
         </Transition>
@@ -83,10 +76,7 @@ function App() {
             </>
           ) : (
             <div className="flex gap-10 text-xl">
-              <NavLink
-                to="/login"
-                className="text-cream flex items-center gap-1"
-              >
+              <NavLink to="/login" className="text-cream flex items-center gap-1">
                 Log in
                 <FiLogIn />
               </NavLink>

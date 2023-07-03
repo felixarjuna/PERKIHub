@@ -49,13 +49,16 @@ export const Events = () => {
         )}
 
         <div className="my-6 -mx-8 sm:m-0 sm:mt-10 sticky top-0 overflow-x-hidden z-10 bg-tundora-900">
-          <div className="p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap animate-marquee">
-            <span>
-              <BsExclamationTriangleFill className="text-lg" />
+          <div className="animate-marquee flex sm:animate-none">
+            <span className="p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap">
+              <span>
+                <BsExclamationTriangleFill className="text-lg" />
+              </span>
+              <span>All events can be registered only one day in advance.</span>
             </span>
-            <span>All events can be registered only one day in advance.</span>
           </div>
-          <div className="absolute top-0 p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap animate-marquee2">
+
+          <div className="absolute top-0 left-0 p-3 text-sm sm:text-xl items-center gap-2 flex whitespace-nowrap animate-marquee2 sm:hidden">
             <span>
               <BsExclamationTriangleFill className="text-lg" />
             </span>

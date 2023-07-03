@@ -62,16 +62,15 @@ export const EventCard = ({
     <div className="sm:my-10 w-96">
       <div className="w-full border-[2px] sm:border-4 border-cream p-6 sm:p-10 bg-tundora-700 -translate-x-1 -translate-y-1">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full border-2 flex items-center justify-center bg-maroon border-maroon">
+          <div className="w-10 h-10 rounded-full border-2 flex items-center justify-center bg-maroon border-cream">
             <BiChurch />
           </div>
           <div>
-            <p>Saturday / 15.30 - 17.00</p>
+            <p>{title}</p>
           </div>
         </div>
 
         <div className="my-5">
-          <h3 className="text-xl sm:text-3xl">{title}</h3>
           <div className="flex items-center gap-2 mt-3">
             <RiCalendarEventFill />
             <p className="opacity-80 text-[0.7rem] font-unbounded">
