@@ -1,105 +1,44 @@
-import React from 'react';
-import {
-  Form,
-  NavLink,
-  Outlet,
-  useLoaderData,
-  useNavigation,
-  useSubmit
-} from 'react-router-dom';
-import { UserResponse } from '../lib/api/contracts';
-
-interface UserLoader {
-  users: UserResponse[];
-  q: string;
-}
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../lib/hooks/useAuth";
 
 export default function Root() {
-  const { users, q } = useLoaderData() as UserLoader;
+  const { currentUser } = useAuth();
 
-  const [query, setQuery] = React.useState<string>(q);
-  React.useEffect(() => {
-    setQuery(q);
-  }, [q]);
+  const navigate = useNavigate();
 
-  const navigation = useNavigation();
-  const submit = useSubmit();
-
-  const searching =
-    navigation.location &&
-    new URLSearchParams(navigation.location.search).has('q');
+  if (currentUser) {
+    navigate("/app/events");
+  }
 
   return (
-    <div className="flex h-screen w-screen">
-      <div id="sidebar">
-        <h1>React Router Contacts</h1>
-        <div>
-          <Form role="search">
-            <input
-              id="q"
-              aria-label="Search contacts"
-              placeholder="Search"
-              type="search"
-              name="q"
-              className={searching ? 'loading' : 'text-input'}
-              defaultValue={q}
-              value={query}
-              onChange={e => {
-                setQuery(e.target.value);
-                const isFirstSearch = q == null;
-                submit(e.currentTarget.form, {
-                  replace: !isFirstSearch,
-                });
-              }}
-            />
-            <div id="search-spinner" aria-hidden hidden={!searching} />
-            {/* <div className="sr-only" aria-live="polite"></div> */}
-          </Form>
-          <Form method="post">
-            <button
-              type="submit"
-              className="text-input text-tundora-200 hover:shadow-lg hover:translate-y-1 hover:translate-x-1 duration-200"
-            >
-              New
-            </button>
-          </Form>
+    <div className="xl:ml-32 p-10 flex h-screen">
+      <div className="sm:w-3/5 flex flex-col sm:justify-center justify-between">
+        <div className="mt-20 sm:m-0">
+          <h2 className="text-5xl sm:text-8xl sm:max-w-xl">Welcome to </h2>
+          <h2 className="text-5xl mt-1 sm:text-8xl max-w-xl text-gradient">Perki Hub.</h2>
+          <h3 className="text-2xl mt-5 sm:text-2xl sm:mt-2">
+            All in one place for our developed Apps.
+          </h3>
         </div>
 
-        <nav>
-          {users.length ? (
-            <ul>
-              {users.map(user => (
-                <li key={user.id}>
-                  <NavLink
-                    to={`users/${user.id}`}
-                    className={({ isActive, isPending }) =>
-                      isActive ? 'active' : isPending ? 'pending' : ''
-                    }
-                  >
-                    {user.firstName || user.lastName ? (
-                      <>
-                        {user.firstName} {user.lastName}
-                      </>
-                    ) : (
-                      <i>No Name</i>
-                    )}{' '}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>
-              <i>No contacts</i>
-            </p>
-          )}
-        </nav>
-      </div>
+        <div>
+          <div className="mt-10 flex gap-6 pb-10">
+            <div className="w-1/2 sm:w-24 bg-lightmaroon  flex items-center justify-center">
+              <NavLink to="/register" className="button-cream" type="button">
+                Register
+              </NavLink>
+            </div>
+            <div className="w-1/2 sm:w-24 flex items-center justify-center bg-cream">
+              <NavLink to="/login" className="button-gray">
+                Login
+              </NavLink>
+            </div>
+          </div>
 
-      <div
-        id="detail"
-        className={navigation.state === 'loading' ? 'loading' : ''}
-      >
-        <Outlet />
+          <div className="-mt-3 text-cream underline underline-offset-2">
+            <NavLink to="app/events/">Continue without Login</NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );

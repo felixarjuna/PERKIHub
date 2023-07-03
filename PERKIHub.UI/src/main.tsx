@@ -5,11 +5,7 @@ import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./error-page";
-import {
-  onCreateEvent,
-  onEventRegister,
-  onEventSignIn,
-} from "./lib/events/events";
+import { onCreateEvent, onEventRegister, onEventSignIn } from "./lib/events/events";
 import { AuthProvider } from "./lib/hooks/useAuth";
 import App from "./routes/App/App";
 import { CreateEventForm } from "./routes/App/Events/CreateEventForm";
@@ -17,7 +13,7 @@ import { Events } from "./routes/App/Events/Events";
 import { EditProfile } from "./routes/App/Profile/EditProfile";
 import { LoginForm } from "./routes/Authentication/LoginForm";
 import { RegisterForm } from "./routes/Authentication/RegisterForm";
-import { Homepage } from "./routes/Homepage/Homepage";
+import Root from "./routes/Root";
 import { ServiceGroups } from "./routes/ServiceGroups/ServiceGroups";
 
 const queryClient = new QueryClient();
@@ -25,7 +21,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Root />,
   },
   {
     path: "/login",
