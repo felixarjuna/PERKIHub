@@ -32,7 +32,7 @@ function App() {
           leave="transition-opacity duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className={"pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen z-10 fixed inset-0"}
+          className={"pl-10 sm:pl-48 bg-tundora-700 w-screen h-screen fixed inset-0 z-20"}
         >
           <div
             className="absolute top-20 text-2xl sm:text-3xl cursor-pointer"
