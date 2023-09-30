@@ -36,9 +36,9 @@ export const EventCard = ({ id, title, date, speaker, topic, participants }: Eve
 
   const onUserJoin = () => {
     // Check if user already login
-    if (session?.user === null) {
+    if (session === null) {
       // If not navigate login page
-      return router.push("/login");
+      return router.push("/api/auth/signin");
     }
     if (name) {
       joinEvent.mutate({ id: id, participants: [...participants, name] });
