@@ -35,7 +35,7 @@ export default function Events() {
         {data?.events?.map((event) => (
           <EventCard
             key={event.id}
-            id={event.id.toString()}
+            id={event.id}
             title={event.title}
             date={event.date}
             speaker={event.speaker}

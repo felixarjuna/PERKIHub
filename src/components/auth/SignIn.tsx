@@ -1,6 +1,5 @@
 "use client";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { Button } from "../ui/button";
+import { signIn, useSession } from "next-auth/react";
 
 export default function SignIn() {
   const { data: session, status } = useSession();
@@ -11,16 +10,22 @@ export default function SignIn() {
     return (
       <div className="flex items-center gap-x-4">
         Signed in as {session.user?.email} <br />
-        <Button variant={"destructive"} onClick={() => signOut()}>
-          Sign out
-        </Button>
+        <div className="w-1/2 sm:w-24 flex items-center justify-center bg-maroon">
+          <button onClick={() => signIn()} className="button-maroon">
+            Sign out
+          </button>
+        </div>
       </div>
     );
   }
   return (
     <div className="flex items-center gap-x-4">
       Not signed in <br />
-      <Button onClick={() => signIn()}>Sign in</Button>
+      <div className="w-1/2 sm:w-24 flex items-center justify-center bg-cream">
+        <button onClick={() => signIn()} className="button-gray">
+          Sign in
+        </button>
+      </div>
     </div>
   );
 }

@@ -33,12 +33,15 @@ export const updateEventParams = createSelectSchema(events, {
 
 export const eventIdSchema = updateEventSchema.pick({ id: true });
 
+export const joinEventParams = z.array(z.string());
+
 // Types for events - used to type API request params and within Components
 export type Event = z.infer<typeof updateEventSchema>;
 export type NewEvent = z.infer<typeof insertEventSchema>;
 export type NewEventParams = z.infer<typeof insertEventParams>;
 export type UpdateEventParams = z.infer<typeof updateEventParams>;
 export type EventId = z.infer<typeof eventIdSchema>["id"];
+export type JoinEventParams = z.infer<typeof joinEventParams>;
 
 // this type infers the return from getEvents() - meaning it will include any joins
 export type CompleteEvent = Awaited<ReturnType<typeof getEvents>>["events"][number];

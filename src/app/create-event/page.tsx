@@ -80,9 +80,9 @@ export default function CreateEventForm() {
                           <PopoverTrigger asChild>
                             <FormControl>
                               <Button
-                                variant={"default"}
+                                variant={"outline"}
                                 className={cn(
-                                  "pl-3 text-left font-normal !text-cream-default",
+                                  "pl-3 text-left font-normal !text-cream",
                                   !field.value && "text-muted-foreground"
                                 )}
                               >

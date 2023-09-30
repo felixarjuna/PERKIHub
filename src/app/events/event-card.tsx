@@ -1,12 +1,17 @@
 "use client";
 
+import { useToast } from "@/components/ui/use-toast";
+import { trpc } from "@/lib/trpc/client";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { BiChurch } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
 import { GiPublicSpeaker } from "react-icons/gi";
 import { RiCalendarEventFill, RiDiscussFill } from "react-icons/ri";
 
 interface EventCardProps {
-  id: string;
+  id: number;
   title: string;
   date: Date;
   speaker: string;
@@ -15,21 +20,29 @@ interface EventCardProps {
 }
 
 export const EventCard = ({ id, title, date, speaker, topic, participants }: EventCardProps) => {
-  // const { currentUser } = useAuth();
-  // const name = `${currentUser?.firstName} ${currentUser?.lastName}`;
-  const name = "felixarjuna";
+  const utils = trpc.useContext();
+  const { toast } = useToast();
+
+  const joinEvent = trpc.events.joinEvent.useMutation({
+    onSuccess: async () => {
+      await utils.events.invalidate();
+      toast({ title: "Join event successfully! ✨" });
+    },
+  });
+
+  const router = useRouter();
+  const { data: session } = useSession();
+  const name = React.useMemo(() => session?.user.name, [session]);
 
   const onUserJoin = () => {
     // Check if user already login
-    // if (currentUser === null) {
-    //   // If not navigate login page
-    //   return navigate('/login', { state: { from: location }, replace: true });
-    // }
-    // const request: JoinEventRequest = {
-    //   id: id,
-    //   username: name,
-    // };
-    // onJoinEvent.mutate(request);
+    if (session?.user === null) {
+      // If not navigate login page
+      return router.push("/login");
+    }
+    if (name) {
+      joinEvent.mutate({ id: id, participants: [...participants, name] });
+    }
   };
 
   return (
@@ -68,14 +81,14 @@ export const EventCard = ({ id, title, date, speaker, topic, participants }: Eve
           <div className="bg-cream w-full sm:w-24">
             <button
               className={
-                participants.includes(name)
+                name && participants.includes(name)
                   ? "button-cream hover:translate-x-0 hover:translate-y-0"
                   : "button-maroon text-[1rem]"
               }
               onClick={onUserJoin}
-              disabled={participants.includes(name)}
+              disabled={participants.includes(name ?? "")}
             >
-              {participants.includes(name) ? `Joined` : "Join"}
+              {name && participants.includes(name) ? `Joined` : "Join"}
             </button>
           </div>
         </div>

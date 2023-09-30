@@ -32,7 +32,6 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.APPLE_CLIENT_SECRET,
     }),
   ],
-  pages: { signIn: "/auth/signin" },
 };
 
 const handler = NextAuth(authOptions);
