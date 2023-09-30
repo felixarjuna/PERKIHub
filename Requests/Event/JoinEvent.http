@@ -1,9 +1,0 @@
-@host=http://localhost:5089
-
-POST {{host}}/api/events/join
-Content-Type: application/json
-
-{
-  "id": "73974AC1-9F5D-43CE-A3CE-8D488487AF16",
-  "username": "Celine Gabrielle"
-}

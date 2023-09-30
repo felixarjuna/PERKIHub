@@ -1,4 +1,0 @@
-GET https://perkihub.azurewebsites.net/api/users
-
-###
-GET http://localhost:8000/api/users

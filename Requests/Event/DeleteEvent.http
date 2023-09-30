@@ -1,3 +1,0 @@
-@host=https://perkihub.azurewebsites.net
-
-DELETE {{host}}/api/events/323cadc2-c80f-4b57-9688-63cd39f0d4c0

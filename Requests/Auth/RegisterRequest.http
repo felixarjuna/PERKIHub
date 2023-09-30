@@ -1,9 +1,0 @@
-POST http://20.23.196.245/auth/register
-Content-Type: application/json
-
-{
-  "firstName": "Jeffy",
-  "lastName": "Hartanto",
-  "email": "hello@yahoo.com",
-  "password": "hello123"
-}
