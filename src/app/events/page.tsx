@@ -18,7 +18,6 @@ export default function Events() {
           <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
           <SignIn />
         </div>
-        <h3 className="text-xl mt-3 sm:mt-10 sm:text-4xl">This Week</h3>
       </div>
 
       <div className="mt-7 w-36 sm:w-44 bg-lightmaroon">
