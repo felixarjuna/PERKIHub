@@ -14,10 +14,11 @@ export const events = mysqlTable("events", {
 });
 
 // Schema for events - used to validate API requests
-export const insertEventSchema = createInsertSchema(events);
+export const insertEventSchema = createInsertSchema(events, {
+  participants: z.array(z.string()),
+}).omit({ id: true });
 
 export const insertEventParams = createSelectSchema(events, {
-  date: z.coerce.string(),
   id: z.coerce.number(),
 }).omit({
   id: true,
