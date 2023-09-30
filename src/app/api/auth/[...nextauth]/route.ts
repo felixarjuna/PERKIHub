@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
+import { env } from "@/lib/env.mjs";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { DefaultSession, NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
-import { env } from "@/lib/env.mjs"
-import GoogleProvider from "next-auth/providers/google";
 import AppleProvider from "next-auth/providers/apple";
+import GoogleProvider from "next-auth/providers/google";
 
 declare module "next-auth" {
   interface Session {
@@ -23,15 +23,16 @@ export const authOptions: NextAuthOptions = {
     },
   },
   providers: [
-     GoogleProvider({
+    GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
     AppleProvider({
       clientId: env.APPLE_CLIENT_ID,
       clientSecret: env.APPLE_CLIENT_SECRET,
-    })
+    }),
   ],
+  pages: { signIn: "/auth/signin" },
 };
 
 const handler = NextAuth(authOptions);

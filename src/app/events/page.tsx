@@ -1,5 +1,6 @@
 "use client";
 
+import SignIn from "@/components/auth/SignIn";
 import { trpc } from "@/lib/trpc/client";
 import { CalendarPlus } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -13,7 +14,10 @@ export default function Events() {
   return (
     <div className="p-8 sm:px-20">
       <div className="sm:mt-10">
-        <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
+          <SignIn />
+        </div>
         <h3 className="text-xl mt-3 sm:mt-10 sm:text-4xl">This Week</h3>
       </div>
 
