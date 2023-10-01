@@ -16,13 +16,8 @@ export default function Home() {
           <div>
             <div className="mt-10 flex gap-6 pb-10">
               <div className="w-1/2 sm:w-24 bg-lightmaroon flex items-center justify-center">
-                <Link href="/register" className="button-cream" type="button">
-                  Register
-                </Link>
-              </div>
-              <div className="w-1/2 sm:w-24 flex items-center justify-center bg-cream">
-                <Link href="/login" className="button-gray">
-                  Login
+                <Link href="/api/auth/signin" className="button-cream" type="button">
+                  Sign In
                 </Link>
               </div>
             </div>
