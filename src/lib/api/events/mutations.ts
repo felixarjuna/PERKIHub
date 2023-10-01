@@ -3,9 +3,11 @@ import {
   EventId,
   JoinEventParams,
   NewEventParams,
+  UpdateEventParams,
   eventIdSchema,
   events,
   insertEventSchema,
+  updateEventSchema,
 } from "@/lib/db/schema/events";
 import { eq } from "drizzle-orm";
 
@@ -13,6 +15,19 @@ export const createEvent = async (event: NewEventParams) => {
   const newEvent = insertEventSchema.parse(event);
   try {
     await db.insert(events).values(newEvent);
+    return { success: true };
+  } catch (err) {
+    const message = (err as Error).message ?? "Error, please try again";
+    console.error(message);
+    return { error: message };
+  }
+};
+
+export const updateEvent = async (id: EventId, event: UpdateEventParams) => {
+  const { id: eventId } = eventIdSchema.parse({ id });
+  const newEvent = updateEventSchema.parse(event);
+  try {
+    await db.update(events).set(newEvent).where(eq(events.id, eventId!));
     return { success: true };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";

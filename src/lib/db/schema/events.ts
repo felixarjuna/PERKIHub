@@ -24,7 +24,7 @@ export const insertEventParams = createSelectSchema(events, {
   id: true,
 });
 
-export const updateEventSchema = createSelectSchema(events);
+export const updateEventSchema = createSelectSchema(events, { participants: z.array(z.string()) });
 
 export const updateEventParams = createSelectSchema(events, {
   date: z.coerce.string(),
