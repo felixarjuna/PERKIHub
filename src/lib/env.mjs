@@ -19,7 +19,6 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     APPLE_CLIENT_ID: z.string().min(1),
     APPLE_CLIENT_SECRET: z.string().min(1),
-    // VERCEL_URL: z.string().url().optional(),
     RESEND_API_KEY: z.string().min(1),
   },
   client: {
