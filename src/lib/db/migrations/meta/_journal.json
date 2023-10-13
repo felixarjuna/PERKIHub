@@ -15,6 +15,13 @@
       "when": 1697199999424,
       "tag": "0001_nosy_sersi",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1697206831076,
+      "tag": "0002_round_selene",
+      "breakpoints": true
     }
   ]
 }

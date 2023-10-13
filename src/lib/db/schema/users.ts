@@ -5,11 +5,9 @@ import { getUsers } from "@/lib/api/users/queries";
 import { users } from "./auth";
 
 // Schema for users - used to validate API requests
-export const insertUserSchema = createInsertSchema(users);
+export const insertUserSchema = createInsertSchema(users, {});
 
-export const insertUserParams = createSelectSchema(users, {}).omit({
-  id: true,
-});
+export const insertUserParams = createSelectSchema(users, {});
 
 export const updateUserSchema = createSelectSchema(users);
 
