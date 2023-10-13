@@ -12,8 +12,7 @@ import {
 import { and, eq } from "drizzle-orm";
 
 export const createUser = async (user: NewUserParams) => {
-  const { session } = await getUserAuth();
-  const newUser = insertUserSchema.parse({ ...user, userId: session?.user.id! });
+  const newUser = insertUserSchema.parse({ ...user });
   try {
     await db.insert(users).values(newUser);
     return { success: true };
