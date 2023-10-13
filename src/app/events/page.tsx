@@ -8,11 +8,10 @@ import { EventCard } from "./event-card";
 
 export default function Events() {
   const router = useRouter();
-
   const { data } = trpc.events.getEvents.useQuery();
 
   return (
-    <div className="p-8 sm:px-20">
+    <div className="p-8 sm:px-20 2xl:max-w-screen-2xl mx-auto">
       <div className="sm:mt-10">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl sm:text-6xl text-gradient">Events</h1>
@@ -30,7 +29,7 @@ export default function Events() {
         </div>
       </div>
 
-      <div className="flex gap-10">
+      <div className="flex gap-10 flex-wrap space-8 justify-between mt-8">
         {data?.events?.map((event) => (
           <EventCard
             key={event.id}
